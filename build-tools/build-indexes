@@ -358,7 +358,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			const tier = (() => {
 				if (isNatDex) {
 					const unobtainables = [
-						'Eevee-Starter', 'Floette-Eternal', 'Pichu-Spiky-eared', 'Pikachu-Belle', 'Pikachu-Cosplay', 'Pikachu-Libre', 'Pikachu-PhD', 'Pikachu-Pop-Star', 'Pikachu-Rock-Star', 'Pikachu-Starter', 'Eternatus-Eternamax',
+						'Eternatus-Eternamax',
 					].map(toID);
 					if (species.isNonstandard && !['Past', 'Gigantamax'].includes(species.isNonstandard)) return 'Illegal';
 					if (unobtainables.includes(species.id)) return 'Illegal';
@@ -441,7 +441,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 				if (
 					[
 						'Aegislash', 'Castform', 'Cherrim', 'Cramorant', 'Eiscue', 'Meloetta', 'Mimikyu', 'Minior', 'Morpeko', 'Wishiwashi',
-					].includes(species.baseSpecies) || species.forme.includes('Totem') || species.forme.includes('Zen')
+					].includes(species.baseSpecies) || species.forme.includes('Zen')
 				) {
 					continue;
 				}
