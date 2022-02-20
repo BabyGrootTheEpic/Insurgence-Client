@@ -1436,7 +1436,7 @@ export class Battle {
 				}
 			}
 			let pp = 1;
-			if (this.abilityActive(['Pressure'])) {
+			if (this.abilityActive(['Pressure']) && move.id !== 'stickyweb') {
 				const foeTargets = [];
 				const moveTarget = move.pressureTarget;
 

@@ -749,7 +749,7 @@ side.z=side.isFar?200:0;
 
 side.missedPokemon={
 sprite:new PokemonSprite(null,{
-x:side.leftof(-100),
+x:side.leftof(this.battle.gameType==='freeforall'?-50:-100),
 y:side.y,
 z:side.z,
 opacity:0},
@@ -1086,12 +1086,22 @@ addSideCondition=function addSideCondition(siden,id,instant){
 if(!this.animating)return;
 var side=this.battle.sides[siden];
 var spriteIndex=+side.isFar;
+var x=side.x;
+var y=side.y;
+if(this.battle.gameType==='freeforall'){
+x+=side.isFar?20:-20;
+if(side.n>1){
+x+=side.isFar?-140:140;
+y+=side.isFar?14:-20;
+}
+}
+
 switch(id){
 case'auroraveil':
 var auroraveil=new Sprite(BattleEffects.auroraveil,{
 display:'block',
-x:side.x,
-y:side.y,
+x:x,
+y:y,
 z:side.behind(-14),
 xscale:1,
 yscale:0,
@@ -1110,8 +1120,8 @@ break;
 case'reflect':
 var reflect=new Sprite(BattleEffects.reflect,{
 display:'block',
-x:side.x,
-y:side.y,
+x:x,
+y:y,
 z:side.behind(-17),
 xscale:1,
 yscale:0,
@@ -1130,8 +1140,8 @@ break;
 case'safeguard':
 var safeguard=new Sprite(BattleEffects.safeguard,{
 display:'block',
-x:side.x,
-y:side.y,
+x:x,
+y:y,
 z:side.behind(-20),
 xscale:1,
 yscale:0,
@@ -1150,8 +1160,8 @@ break;
 case'lightscreen':
 var lightscreen=new Sprite(BattleEffects.lightscreen,{
 display:'block',
-x:side.x,
-y:side.y,
+x:x,
+y:y,
 z:side.behind(-23),
 xscale:1,
 yscale:0,
@@ -1170,8 +1180,8 @@ break;
 case'mist':
 var mist=new Sprite(BattleEffects.mist,{
 display:'block',
-x:side.x,
-y:side.y,
+x:x,
+y:y,
 z:side.behind(-27),
 xscale:1,
 yscale:0,
@@ -1190,8 +1200,8 @@ break;
 case'stealthrock':
 var rock1=new Sprite(BattleEffects.rock1,{
 display:'block',
-x:side.leftof(-40),
-y:side.y-10,
+x:x+side.leftof(-40),
+y:y-10,
 z:side.z,
 opacity:0.5,
 scale:0.2},
@@ -1199,8 +1209,8 @@ this);
 
 var rock2=new Sprite(BattleEffects.rock2,{
 display:'block',
-x:side.leftof(-20),
-y:side.y-40,
+x:x+side.leftof(-20),
+y:y-40,
 z:side.z,
 opacity:0.5,
 scale:0.2},
@@ -1208,8 +1218,8 @@ this);
 
 var rock3=new Sprite(BattleEffects.rock1,{
 display:'block',
-x:side.leftof(30),
-y:side.y-20,
+x:x+side.leftof(30),
+y:y-20,
 z:side.z,
 opacity:0.5,
 scale:0.2},
@@ -1217,8 +1227,8 @@ this);
 
 var rock4=new Sprite(BattleEffects.rock2,{
 display:'block',
-x:side.leftof(10),
-y:side.y-30,
+x:x+side.leftof(10),
+y:y-30,
 z:side.z,
 opacity:0.5,
 scale:0.2},
@@ -1402,24 +1412,24 @@ break;
 case'gmaxsteelsurge':
 var surge1=new Sprite(BattleEffects.greenmetal1,{
 display:'block',
-x:side.leftof(-30),
-y:side.y-20,
+x:x+side.leftof(-30),
+y:y-20,
 z:side.z,
 opacity:0.5,
 scale:0.8},
 this);
 var surge2=new Sprite(BattleEffects.greenmetal2,{
 display:'block',
-x:side.leftof(35),
-y:side.y-15,
+x:x+side.leftof(35),
+y:y-15,
 z:side.z,
 opacity:0.5,
 scale:0.8},
 this);
 var surge3=new Sprite(BattleEffects.greenmetal1,{
 display:'block',
-x:side.leftof(50),
-y:side.y-10,
+x:x+side.leftof(50),
+y:y-10,
 z:side.z,
 opacity:0.5,
 scale:0.8},
@@ -1440,8 +1450,8 @@ var levels=this.battle.sides[siden].sideConditions['spikes'][1];
 if(spikeArray.length<1&&levels>=1){
 var spike1=new Sprite(BattleEffects.caltrop,{
 display:'block',
-x:side.x-25,
-y:side.y-40,
+x:x-25,
+y:y-40,
 z:side.z,
 scale:0.3},
 this);
@@ -1451,8 +1461,8 @@ spikeArray.push(spike1);
 if(spikeArray.length<2&&levels>=2){
 var spike2=new Sprite(BattleEffects.caltrop,{
 display:'block',
-x:side.x+30,
-y:side.y-45,
+x:x+30,
+y:y-45,
 z:side.z,
 scale:.3},
 this);
@@ -1462,8 +1472,8 @@ spikeArray.push(spike2);
 if(spikeArray.length<3&&levels>=3){
 var spike3=new Sprite(BattleEffects.caltrop,{
 display:'block',
-x:side.x+50,
-y:side.y-40,
+x:x+50,
+y:y-40,
 z:side.z,
 scale:.3},
 this);
@@ -1481,8 +1491,8 @@ var tspikeLevels=this.battle.sides[siden].sideConditions['toxicspikes'][1];
 if(tspikeArray.length<1&&tspikeLevels>=1){
 var tspike1=new Sprite(BattleEffects.poisoncaltrop,{
 display:'block',
-x:side.x+5,
-y:side.y-40,
+x:x+5,
+y:y-40,
 z:side.z,
 scale:0.3},
 this);
@@ -1492,8 +1502,8 @@ tspikeArray.push(tspike1);
 if(tspikeArray.length<2&&tspikeLevels>=2){
 var tspike2=new Sprite(BattleEffects.poisoncaltrop,{
 display:'block',
-x:side.x-15,
-y:side.y-35,
+x:x-15,
+y:y-35,
 z:side.z,
 scale:.3},
 this);
@@ -1504,8 +1514,8 @@ break;
 case'stickyweb':
 var web=new Sprite(BattleEffects.web,{
 display:'block',
-x:side.x+15,
-y:side.y-35,
+x:x+15,
+y:y-35,
 z:side.z,
 opacity:0.4,
 scale:0.7},

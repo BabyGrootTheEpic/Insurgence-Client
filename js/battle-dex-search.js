@@ -1513,7 +1513,7 @@ prevo=prevoSpecies.prevo;
 if(pokemon.battleOnly&&typeof pokemon.battleOnly==='string'){
 species=dex.species.get(pokemon.battleOnly);
 }
-var excludedForme=function(s){return['Alola','Alola-Totem','Galar','Galar-Zen'].includes(s.forme);};
+var excludedForme=function(s){return['Alola','Alola-Totem','Galar','Galar-Zen','Hisui'].includes(s.forme);};
 if(baseSpecies.otherFormes&&!['Wormadam','Urshifu'].includes(baseSpecies.baseSpecies)){
 if(!excludedForme(species))speciesTypes.push.apply(speciesTypes,baseSpecies.types);for(var _i10=0,_baseSpecies$otherFor=
 baseSpecies.otherFormes;_i10<_baseSpecies$otherFor.length;_i10++){var formeName=_baseSpecies$otherFor[_i10];

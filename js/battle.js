@@ -1436,7 +1436,7 @@ if(BattleItems[_item].zMoveType===move.type)pokemon.item=_item;
 }
 }
 var pp=1;
-if(this.abilityActive(['Pressure'])){
+if(this.abilityActive(['Pressure'])&&move.id!=='stickyweb'){
 var foeTargets=[];
 var moveTarget=move.pressureTarget;
 

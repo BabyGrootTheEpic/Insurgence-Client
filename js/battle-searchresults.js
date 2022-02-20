@@ -186,6 +186,8 @@ errorMessage));
 
 }
 
+var pp=move.pp===1||move.noPPBoosts?move.pp:move.pp*8/5;
+if(search.dex.gen<3)pp=Math.min(61,pp);
 return preact.h("li",{"class":"result"},preact.h("a",{href:this.URL_ROOT+"move/"+id,"data-target":"push","data-entry":"move|"+move.name},
 preact.h("span",{"class":"col movenamecol"},this.renderName(move.name,matchStart,matchEnd,tagStart)),
 
@@ -198,10 +200,10 @@ preact.h("span",{"class":"col labelcol"},
 move.category!=='Status'?[preact.h("em",null,"Power"),preact.h("br",null),""+move.basePower||"\u2014"]:''),
 
 preact.h("span",{"class":"col widelabelcol"},
-preact.h("em",null,"Accuracy"),preact.h("br",null),"$",move.accuracy&&move.accuracy!==true?move.accuracy+"%":"\u2014"),
+preact.h("em",null,"Accuracy"),preact.h("br",null),move.accuracy&&move.accuracy!==true?move.accuracy+"%":"\u2014"),
 
 preact.h("span",{"class":"col pplabelcol"},
-preact.h("em",null,"PP"),preact.h("br",null),move.pp===1||move.noPPBoosts?move.pp:move.pp*8/5),
+preact.h("em",null,"PP"),preact.h("br",null),pp),
 
 
 preact.h("span",{"class":"col movedesccol"},move.shortDesc)));
