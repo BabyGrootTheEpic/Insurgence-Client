@@ -431,17 +431,17 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 				if (species.tier === 'CAP' || species.tier === 'CAP NFE' || species.tier === 'CAP LC') {
 					return species.tier;
 				}
-				if (isDoubles && genNum > 4) {
+				/*if (isDoubles && genNum > 4) {
 					return species.doublesTier;
-				}
+				}*/
 				return species.tier;
 			})();
 			overrideTier[species.id] = tier;
 			if (species.forme) {
 				if (
 					[
-						'Aegislash', 'Castform', 'Cherrim', 'Cramorant', 'Eiscue', 'Meloetta', 'Mimikyu', 'Minior', 'Morpeko', 'Wishiwashi',
-					].includes(species.baseSpecies) || species.forme.includes('Zen')
+						'Aegislash', 'Castform', 'Cherrim', 'Cramorant', 'Eiscue', 'Meloetta', 'Minior', 'Morpeko', 'Wishiwashi',
+					].includes(species.baseSpecies) || species.forme.includes('Zen') || species.forme.includes('Busted')
 				) {
 					continue;
 				}
@@ -561,9 +561,9 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			if (isVGC) {
 				return ["Mythical", "Restricted Legendary", "Regular", "NFE", "LC"];
 			}
-			if (isDoubles && genNum > 4) {
+			/*if (isDoubles && genNum > 4) {
 				return ["DUber", "(DUber)", "DOU", "DBL", "(DOU)", "DUU", "(DUU)", "New", "NFE", "LC"];
-			}
+			}*/
 			if (gen === 'gen1' || gen === 'gen2' || gen === 'gen3' || isStadium) {
 				return ["Uber", "OU", "(OU)", "UUBL", "UU", "NUBL", "NU", "PUBL", "PU", "NFE", "LC"];
 			}
@@ -606,14 +606,14 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			}
 			tiers.push(...tierTable[tier]);
 		}
-		if (!isDoubles) {
+		//if (!isDoubles) {
 			if (!formatSlices['OU']) formatSlices['OU'] = formatSlices['New'];
 			if (!formatSlices['UU']) formatSlices['UU'] = formatSlices['New'];
 			if (!formatSlices['RU']) formatSlices['RU'] = formatSlices['New'];
-		} else {
+		/*} else {
 			if (!formatSlices['DOU']) formatSlices['DOU'] = formatSlices['New'];
 			if (!formatSlices['DUU']) formatSlices['DUU'] = formatSlices['New'];
-		}
+		}*/
 
 		const itemList = Object.keys(Dex.data.Items);
 		itemList.sort();
