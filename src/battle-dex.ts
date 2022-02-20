@@ -183,15 +183,11 @@ const Dex = new class implements ModdedDex {
 		let prefix = '';
 		if (window.document?.location?.protocol !== 'http:') prefix = 'https:';
 		return `${prefix}//raw.githubusercontent.com/BabyGrootTheEpic/Sprites/main/play.pokemonshowdown.com/`;
-		//return `${prefix}//${window.Config ? Config.routes.client : 'play.pokemonshowdown.com'}/`;
-		//return prefix+"//raw.githubusercontent.com/BabyGrootTheEpic/Sprites/main/play.pokemonshowdown.com/";
 	})();
 
 	fxPrefix = (() => {
 		const protocol = (window.document?.location?.protocol !== 'http:') ? 'https:' : '';
 		return `${protocol}//raw.githubusercontent.com/BabyGrootTheEpic/Sprites/main/play.pokemonshowdown.com/fx/`;
-		//return `${protocol}//${window.Config ? Config.routes.client : 'play.pokemonshowdown.com'}/fx/`;
-		//return protocol+"//raw.githubusercontent.com/BabyGrootTheEpic/Sprites/main/play.pokemonshowdown.com/fx/";
 	})();
 
 	loadedSpriteData = {xy: 1, bw: 0};
