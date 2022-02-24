@@ -630,9 +630,14 @@ dir=(baseDir||'gen5')+dir;
 
 
 
-if(spriteData.gen>=4&&miscData['frontf']&&options.gender==='F'){
+if(spriteData.gen>=4&&options.gender==='F'){
+if(miscData['frontf']||[
+'bulbasaurdelta','ivysaurdelta','venusaurdelta','venusaurdeltamega','deinodelta','zweilousdelta','hydreigondelta','gardevoirdeltamega','meganiummega'].
+includes(speciesid)){
 name+='-f';
 }
+}
+
 
 spriteData.url+=dir+'/'+name+'.png';
 }
@@ -682,10 +687,10 @@ num=BattlePokemonIconIndexes[id];
 }
 
 if(isFemale){
-
-
-
-if(['unfezant','frillish','jellicent','meowstic','pyroar'].includes(id)){
+if([
+'unfezant','frillish','jellicent','meowstic','pyroar',
+'bulbasaurdelta','ivysaurdelta','venusaurdelta','venusaurdeltamega','deinodelta','zweilousdelta','hydreigondelta'].
+includes(id)){
 num=BattlePokemonIconIndexes[id+'f'];
 }
 }

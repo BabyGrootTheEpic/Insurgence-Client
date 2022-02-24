@@ -630,9 +630,14 @@ dir=(baseDir||'gen5')+dir;
 
 
 
-if(spriteData.gen>=4&&miscData['frontf']&&options.gender==='F'){
+if(spriteData.gen>=4&&options.gender==='F'){
+if(miscData['frontf']||[
+'bulbasaurdelta','ivysaurdelta','venusaurdelta','venusaurdeltamega','deinodelta','zweilousdelta','hydreigondelta','gardevoirdeltamega','meganiummega'].
+includes(speciesid)){
 name+='-f';
 }
+}
+
 
 spriteData.url+=dir+'/'+name+'.png';
 }
@@ -682,10 +687,10 @@ num=BattlePokemonIconIndexes[id];
 }
 
 if(isFemale){
-
-
-
-if(['unfezant','frillish','jellicent','meowstic','pyroar'].includes(id)){
+if([
+'unfezant','frillish','jellicent','meowstic','pyroar',
+'bulbasaurdelta','ivysaurdelta','venusaurdelta','venusaurdeltamega','deinodelta','zweilousdelta','hydreigondelta'].
+includes(id)){
 num=BattlePokemonIconIndexes[id+'f'];
 }
 }
@@ -1807,7 +1812,7 @@ stunfiskmega:1608+29,
 bisharpmega:1608+30,
 hydreigonmega:1608+31,
 sunflorafmega:1608+32,
-
+venusaurdeltamegaf:1608+33,
 
 mewtwoarmor:1644+0,
 mewtwoshadow:1644+1,
@@ -1825,13 +1830,13 @@ zekromarmor:1644+12,
 snorlaxdeltasummer:1644+14,
 snorlaxdeltaautumn:1644+15,
 snorlaxdeltawinter:1644+16,
-snorlaxdeltasakura:1644+17};
-
-
-
-
-
-
+snorlaxdeltasakura:1644+17,
+bulbasaurdeltaf:1644+18,
+ivysaurdeltaf:1644+19,
+venusaurdeltaf:1644+20,
+deinodeltaf:1644+21,
+zweilousdeltaf:1644+22,
+hydreigondeltaf:1644+23};
 
 
 var BattlePokemonIconIndexesLeft={

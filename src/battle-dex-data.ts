@@ -787,7 +787,7 @@ const BattlePokemonIconIndexes: {[id: string]: number} = {
 	bisharpmega: 1608 + 30,
 	hydreigonmega: 1608 + 31,
 	sunflorafmega: 1608 + 32,
-	//venusaurdeltamegaf: 1608 + 33,
+	venusaurdeltamegaf: 1608 + 33,
 
 	mewtwoarmor: 1644 + 0,
 	mewtwoshadow: 1644 + 1,
@@ -806,12 +806,12 @@ const BattlePokemonIconIndexes: {[id: string]: number} = {
 	snorlaxdeltaautumn: 1644 + 15,
 	snorlaxdeltawinter: 1644 + 16,
 	snorlaxdeltasakura: 1644 + 17,
-	//bulbasaurdeltaf: 1644 + 18,
-	//ivysaurdeltaf: 1644 + 19,
-	//venusaurdeltaf: 1644 + 20,
-	//deinodeltaf: 1644 + 21,
-	//zweilousdeltaf: 1644 + 22,
-	//hydreigondeltaf: 1644 + 23,
+	bulbasaurdeltaf: 1644 + 18,
+	ivysaurdeltaf: 1644 + 19,
+	venusaurdeltaf: 1644 + 20,
+	deinodeltaf: 1644 + 21,
+	zweilousdeltaf: 1644 + 22,
+	hydreigondeltaf: 1644 + 23,
 };
 
 const BattlePokemonIconIndexesLeft: {[id: string]: number} = {

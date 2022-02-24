@@ -630,9 +630,14 @@ const Dex = new class implements ModdedDex {
 
 			// Gender differences don't exist prior to Gen 4,
 			// so there are no sprites for it
-			if (spriteData.gen >= 4 && miscData['frontf'] && options.gender === 'F') {
-				name += '-f';
+			if (spriteData.gen >= 4 && options.gender === 'F') {
+				if(miscData['frontf'] || [
+					'bulbasaurdelta', 'ivysaurdelta', 'venusaurdelta', 'venusaurdeltamega', 'deinodelta', 'zweilousdelta', 'hydreigondelta', 'gardevoirdeltamega', 'meganiummega'
+				].includes(speciesid)) {
+					name += '-f';
+				}
 			}
+			
 
 			spriteData.url += dir + '/' + name + '.png';
 		}
@@ -681,14 +686,14 @@ const Dex = new class implements ModdedDex {
 			num = BattlePokemonIconIndexes[id];
 		}
 
-		/*if (isFemale) {
-			/*if ([
+		if (isFemale) {
+			if ([
 				'unfezant', 'frillish', 'jellicent', 'meowstic', 'pyroar',
-				'bulbasaurdelta', 'ivysaurdelta', 'venusaurdelta', 'venusaurdeltamega', 'deinodelta', 'zweilousdelta', 'hydreigondelta',*
-			if (['unfezant', 'frillish', 'jellicent', 'meowstic', 'pyroar'].includes(id)) {
+				'bulbasaurdelta', 'ivysaurdelta', 'venusaurdelta', 'venusaurdeltamega', 'deinodelta', 'zweilousdelta', 'hydreigondelta'
+			].includes(id)) {
 				num = BattlePokemonIconIndexes[id + 'f'];
 			}
-		}*/
+		}
 		if (facingLeft) {
 			if (BattlePokemonIconIndexesLeft[id]) {
 				num = BattlePokemonIconIndexesLeft[id];
