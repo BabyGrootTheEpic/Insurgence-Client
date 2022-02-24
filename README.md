@@ -1,7 +1,14 @@
 Pokémon Showdown Client
 ========================================================================
 
-Navigation: [Website][1] | [Server repository][2] | **Client repository** | [Dex repository][3]
+Navigation (My fork): [Server repository][1] | **Client repository** | [Sprite repository][2]
+
+  [1]: https://github.com/BabyGrootTheEpic/Insurgence-Showdown
+  [2]: https://github.com/BabyGrootTheEpic/Sprites
+
+========================================================================
+
+Navigation (Smogon): [Website][1] | [Server repository][2] | **Client repository** | [Dex repository][3]
 
   [1]: http://pokemonshowdown.com/
   [2]: https://github.com/Zarel/Pokemon-Showdown
