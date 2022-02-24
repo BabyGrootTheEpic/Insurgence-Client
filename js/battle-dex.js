@@ -675,11 +675,16 @@ num=BattlePokedex[id].num;
 if(num<0)num=0;
 if(num>898)num=0;
 
+
+
 if((_window$BattlePokemon3=window.BattlePokemonIconIndexes)!=null&&_window$BattlePokemon3[id]){
 num=BattlePokemonIconIndexes[id];
 }
 
 if(isFemale){
+
+
+
 if(['unfezant','frillish','jellicent','meowstic','pyroar'].includes(id)){
 num=BattlePokemonIconIndexes[id+'f'];
 }

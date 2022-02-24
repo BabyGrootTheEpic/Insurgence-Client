@@ -673,17 +673,22 @@ const Dex = new class implements ModdedDex {
 			num = BattlePokedex[id].num;
 		}
 		if (num < 0) num = 0;
-		if (num > 898) num = 0;
+		if (num > 898 /*&& num < 7000*/) num = 0;
+		//if (num > 7041 && num < 8000) num = 0;
+		//if (num > 8044) num = 0;
 
 		if (window.BattlePokemonIconIndexes?.[id]) {
 			num = BattlePokemonIconIndexes[id];
 		}
 
-		if (isFemale) {
+		/*if (isFemale) {
+			/*if ([
+				'unfezant', 'frillish', 'jellicent', 'meowstic', 'pyroar',
+				'bulbasaurdelta', 'ivysaurdelta', 'venusaurdelta', 'venusaurdeltamega', 'deinodelta', 'zweilousdelta', 'hydreigondelta',*
 			if (['unfezant', 'frillish', 'jellicent', 'meowstic', 'pyroar'].includes(id)) {
 				num = BattlePokemonIconIndexes[id + 'f'];
 			}
-		}
+		}*/
 		if (facingLeft) {
 			if (BattlePokemonIconIndexesLeft[id]) {
 				num = BattlePokemonIconIndexesLeft[id];

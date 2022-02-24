@@ -752,6 +752,8 @@ meloettadeltamagician:1380+222,
 hoopadelta:1380+223,
 hoopadeltaunbound:1380+224,
 ufi:1380+225,
+missingno:1380+226,
+
 poliwrathmega:1608+0,
 marowakmega:1608+1,
 eeveepremegamegabase:1608+2,
@@ -760,7 +762,7 @@ typhlosionmega:1608+4,
 feraligatrmega:1608+5,
 sudowoodomega:1608+6,
 politoedmega:1608+7,
-sunfloramega:1608+8,
+sunflorammega:1608+8,
 girafarigmega:1608+9,
 steelixmegafire:1608+10,
 magcargomega:1608+11,
@@ -784,6 +786,9 @@ haxorusmega:1608+28,
 stunfiskmega:1608+29,
 bisharpmega:1608+30,
 hydreigonmega:1608+31,
+sunflorafmega:1608+32,
+
+
 mewtwoarmor:1644+0,
 mewtwoshadow:1644+1,
 mewtwoshadowmega:1644+2,
@@ -801,6 +806,12 @@ snorlaxdeltasummer:1644+14,
 snorlaxdeltaautumn:1644+15,
 snorlaxdeltawinter:1644+16,
 snorlaxdeltasakura:1644+17};
+
+
+
+
+
+
 
 
 var BattlePokemonIconIndexesLeft={
