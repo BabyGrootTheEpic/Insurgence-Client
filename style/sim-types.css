@@ -393,3 +393,69 @@
 	background: linear-gradient(to bottom,  hsl(310,41%,77%),  hsl(310,41%,83%));
 	border-color: hsl(310,41%,41%);
 }
+
+.movemenu button.type-\?\?\? {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(159,21%,93%);
+	background: linear-gradient(to bottom,  hsl(159,21%,97%),  hsl(159,21%,84%));
+	border-color: hsl(159,21%,70%);
+}
+.movemenu button.type-\?\?\? small {
+	color: hsl(159,21%,41%);
+}
+.movemenu button.type-\?\?\?:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(159,21%,87%);
+	background: linear-gradient(to bottom,  hsl(159,21%,94%),  hsl(159,21%,77%));
+	border-color: hsl(159,21%,41%);
+}
+.movemenu button.type-\?\?\?:active, .movemenu button.type-\?\?\?.pressed {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(159,21%,77%);
+	background: linear-gradient(to bottom,  hsl(159,21%,77%),  hsl(159,21%,83%));
+	border-color: hsl(159,21%,41%);
+}
+
+.movemenu button.type-Crystal {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(178,50%,93%);
+	background: linear-gradient(to bottom,  hsl(178,50%,97%),  hsl(178,50%,84%));
+	border-color: hsl(178,50%,70%);
+}
+.movemenu button.type-Crystal small {
+	color: hsl(178,50%,41%);
+}
+.movemenu button.type-Crystal:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(178,50%,87%);
+	background: linear-gradient(to bottom,  hsl(178,50%,94%),  hsl(178,50%,77%));
+	border-color: hsl(178,50%,41%);
+}
+.movemenu button.type-Crystal:active, .movemenu button.type-Crystal.pressed {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(178,50%,77%);
+	background: linear-gradient(to bottom,  hsl(178,50%,77%),  hsl(178,50%,83%));
+	border-color: hsl(178,50%,41%);
+}
+
+.movemenu button.type-Shadow {
+	/* bg: 97 to 90, border: 70 */
+	background: hsl(291,25%,93%);
+	background: linear-gradient(to bottom,  hsl(291,25%,97%),  hsl(291,25%,84%));
+	border-color: hsl(291,25%,70%);
+}
+.movemenu button.type-Shadow small {
+	color: hsl(291,25%,41%);
+}
+.movemenu button.type-Shadow:hover {
+	/* bg: 95 to 83, border: 41 */
+	background: hsl(291,25%,87%);
+	background: linear-gradient(to bottom,  hsl(291,25%,94%),  hsl(291,25%,77%));
+	border-color: hsl(291,25%,41%);
+}
+.movemenu button.type-Shadow:active, .movemenu button.type-Shadow.pressed {
+	/* bg: 83 to 88, border: 41 */
+	background: hsl(291,25%,77%);
+	background: linear-gradient(to bottom,  hsl(291,25%,77%),  hsl(291,25%,83%));
+	border-color: hsl(291,25%,41%);
+}

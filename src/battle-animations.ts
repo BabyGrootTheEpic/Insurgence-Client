@@ -1545,7 +1545,7 @@ export class BattleScene implements BattleSceneStub {
 
 	typeAnim(pokemon: Pokemon, types: string) {
 		const result = BattleLog.escapeHTML(types).split('/').map(type =>
-			'<img src="' + Dex.resourcePrefix + 'sprites/types/' + type + '.png" alt="' + type + '" class="pixelated" />'
+			'<img src="' + Dex.resourcePrefix + 'sprites/types/' + type.replace(/\?/g, '%3f') + '.png" alt="' + type + '" class="pixelated" />'
 		).join(' ');
 		this.resultAnim(pokemon, result, 'neutral');
 	}
@@ -2916,7 +2916,7 @@ export class PokemonSprite extends Sprite {
 		}
 		if (pokemon.volatiles.typeadd) {
 			const type = pokemon.volatiles.typeadd[1];
-			status += '+<img src="' + Dex.resourcePrefix + 'sprites/types/' + type + '.png" alt="' + type + '" class="pixelated" /> ';
+			status += '+<img src="' + Dex.resourcePrefix + 'sprites/types/' + type.replace(/\?/g, '%3f') + '.png" alt="' + type + '" class="pixelated" /> ';
 		}
 		for (const stat in pokemon.boosts) {
 			if (pokemon.boosts[stat]) {

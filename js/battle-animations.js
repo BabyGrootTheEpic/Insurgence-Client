@@ -1545,7 +1545,7 @@ this.addSideCondition(siden,_id4,true);
 
 typeAnim=function typeAnim(pokemon,types){
 var result=BattleLog.escapeHTML(types).split('/').map(function(type){return(
-'<img src="'+Dex.resourcePrefix+'sprites/types/'+type+'.png" alt="'+type+'" class="pixelated" />');}).
+'<img src="'+Dex.resourcePrefix+'sprites/types/'+type.replace(/\?/g,'%3f')+'.png" alt="'+type+'" class="pixelated" />');}).
 join(' ');
 this.resultAnim(pokemon,result,'neutral');
 };_proto.
@@ -2916,7 +2916,7 @@ status+='<img src="'+Dex.resourcePrefix+'sprites/types/'+encodeURIComponent(type
 }
 if(pokemon.volatiles.typeadd){
 var _type=pokemon.volatiles.typeadd[1];
-status+='+<img src="'+Dex.resourcePrefix+'sprites/types/'+_type+'.png" alt="'+_type+'" class="pixelated" /> ';
+status+='+<img src="'+Dex.resourcePrefix+'sprites/types/'+_type.replace(/\?/g,'%3f')+'.png" alt="'+_type+'" class="pixelated" /> ';
 }
 for(var stat in pokemon.boosts){
 if(pokemon.boosts[stat]){

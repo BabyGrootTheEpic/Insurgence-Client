@@ -812,6 +812,101 @@ const BattlePokemonIconIndexes: {[id: string]: number} = {
 	deinodeltaf: 1644 + 21,
 	zweilousdeltaf: 1644 + 22,
 	hydreigondeltaf: 1644 + 23,
+
+	//dugtriomega: 1668 + 0,
+	//sceptilemegazo: 1668 + 1,
+	//swampertmegazo: 1668 + 2,
+	//jirachidelta: 1668 + 3,
+	//victinidelta: 1668 + 4,
+	//golurkmega: 1668 + 5,
+	//divaevus: 1668 + 6,
+	//maladeux: 1668 + 7,
+	//ausitto: 1668 + 8,
+	//megasparce: 1668 + 9,
+	//miloticdeltaf: 1668 + 10,
+	//pinsirdelta: 1668 + 11,
+	//zangoosedelta: 1668 + 12,
+	//chimechodelta: 1668 + 13,
+	//aggrondeltai: 1668 + 14,
+	//fulsignis: 1668 + 15,
+	//umilautus: 1668 + 16,
+	//gaiacastus: 1668 + 17,
+	//tonitreum: 1668 + 18,
+	//terranumen: 1668 + 19,
+	//adamandura: 1668 + 20,
+	//geludeus: 1668 + 21,
+	//memorpheus: 1668 + 22,
+	//certapugno: 1668 + 23,
+	//ryubestia: 1668 + 24,
+	//exarego: 1668 + 25,
+	//venocoluber: 1668 + 26,
+	//ferrocalyps: 1668 + 27,
+	//sepulcumbra: 1668 + 28,
+	//caelitus: 1668 + 29,
+	//leporea: 1668 + 30,
+	//warhaxorus: 1668 + 31,
+	//cybergoomy: 1668 + 32,
+	//hydreigod: 1668 + 33,
+	//machamence: 1668 + 34,
+	//rizeflygon: 1668 + 35,
+	//shineflygon: 1668 + 36,
+	//gigagoomy: 1668 + 37,
+	//ninetalesdelta: 1668 + 38,
+	//aerodactyldelta: 1668 + 39,
+	//raichudeltas: 1668 + 40,
+	//blastoisedeltas: 1668 + 41,
+	//charizarddeltae: 1668 + 42,
+	//machampdelta: 1668 + 43,
+	//houndoomdelta: 1668 + 44,
+
+	//pidgeotshadow: 1668 + 45
+	//vulpixshadow: 1668 + 46
+	//growlitheshadow: 1668 + 47
+	////weepinbellshadow: 1668 + 48
+	//geodudeshadow: 1668 + 49
+	//golemshadow: 1668 + 50
+	//rapidashshadow: 1668 + 51
+	//dodrioshadow: 1668 + 52
+	//voltorbshadow: 1668 + 53
+	//electrodeshadow: 1668 + 54
+	////electabuzzshadow: 1668 + 55
+	//eeveeshadow: 1668 + 56
+	//porygonshadow: 1668 + 57
+	//dragoniteshadow: 1668 + 58
+	//politoedshadow: 1668 + 59
+	//scizorshadow: 1668 + 60
+	//donphanshadow: 1668 + 61
+	//lugiashadow: 1668 + 62
+	//hoohshadow: 1668 + 63
+	//gardevoirshadow: 1668 + 64
+	//breloomshadow: 1668 + 65
+	//mawileshadow: 1668 + 66
+	//medichamshadow: 1668 + 67
+	//electrikeshadow: 1668 + 68
+	//wailmershadow: 1668 + 69
+	//flygonshadow: 1668 + 70
+	////cacneashaodw: 1668 + 71
+	//swablushadow: 1668 + 72
+	//absolshadow: 1668 + 73
+	//metagrossshadow: 1668 + 74
+	//kyogreshadow: 1668 + 75
+	//groudonshadow: 1668 + 76
+	//rayquazashadow: 1668 + 77
+	//riolushadow: 1668 + 78
+	//toxicroakshadow: 1668 + 79
+	//magnezoneshadow: 1668 + 80
+	//shayminskyshadow: 1668 + 81
+	//gigalithshadow: 1668 + 82
+	//excadrillshadow: 1668 + 83
+	//sigilyphshadow: 1668 + 84
+	//reuniclusshadow: 1668 + 85
+	////vanilliteshadow: 1668 + 86
+	////eelektross: 1668 + 87
+	//cryogonalshadow: 1668 + 89
+	//keldeoshadow: 1668 + 90
+	//greninjashadow: 1668 + 91
+	//chesnaughtshadow: 1668 + 92
+	//delphoxshadow: 1668 + 93
 };
 
 const BattlePokemonIconIndexesLeft: {[id: string]: number} = {
@@ -1244,7 +1339,7 @@ type NatureName = 'Adamant' | 'Bashful' | 'Bold' | 'Brave' | 'Calm' | 'Careful' 
 	'Quiet' | 'Quirky' | 'Rash' | 'Relaxed' | 'Sassy' | 'Serious' | 'Timid';
 type StatNameExceptHP = 'atk' | 'def' | 'spa' | 'spd' | 'spe';
 type TypeName = 'Normal' | 'Fighting' | 'Flying' | 'Poison' | 'Ground' | 'Rock' | 'Bug' | 'Ghost' | 'Steel' |
-	'Fire' | 'Water' | 'Grass' | 'Electric' | 'Psychic' | 'Ice' | 'Dragon' | 'Dark' | 'Fairy' | '???';
+	'Fire' | 'Water' | 'Grass' | 'Electric' | 'Psychic' | 'Ice' | 'Dragon' | 'Dark' | 'Fairy' | '???' | 'Crystal' | 'Shadow';
 type StatusName = 'par' | 'psn' | 'frz' | 'slp' | 'brn';
 type BoostStatName = 'atk' | 'def' | 'spa' | 'spd' | 'spe' | 'evasion' | 'accuracy' | 'spc';
 type GenderName = 'M' | 'F' | 'N';

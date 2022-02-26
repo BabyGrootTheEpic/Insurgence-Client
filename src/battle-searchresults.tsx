@@ -77,7 +77,7 @@ class PSSearchResults extends preact.Component<{search: DexSearch}> {
 
 			<span class="col typecol">
 				{pokemon.types.map(type =>
-					<img src={`${Dex.resourcePrefix}sprites/types/${type}.png`} alt={type} height="14" width="32" class="pixelated" />
+					<img src={`${Dex.resourcePrefix}sprites/types/${type.replace(/\?/g, '%3f')}.png`} alt={type} height="14" width="32" class="pixelated" />
 				)}
 			</span>
 
@@ -192,7 +192,7 @@ class PSSearchResults extends preact.Component<{search: DexSearch}> {
 			<span class="col movenamecol">{this.renderName(move.name, matchStart, matchEnd, tagStart)}</span>
 
 			<span class="col typecol">
-				<img src={`${Dex.resourcePrefix}sprites/types/${move.type}.png`} alt={move.type} height="14" width="32" class="pixelated" />
+				<img src={`${Dex.resourcePrefix}sprites/types/${move.type.replace(/\?/g, '%3f')}.png`} alt={move.type} height="14" width="32" class="pixelated" />
 				<img src={`${Dex.resourcePrefix}sprites/categories/${move.category}.png`} alt={move.category} height="14" width="32" class="pixelated" />
 			</span>
 
@@ -219,7 +219,7 @@ class PSSearchResults extends preact.Component<{search: DexSearch}> {
 			<span class="col namecol">{this.renderName(name, matchStart, matchEnd)}</span>
 
 			<span class="col typecol">
-				<img src={`${Dex.resourcePrefix}sprites/types/${name}.png`} alt={name} height="14" width="32" class="pixelated" />
+				<img src={`${Dex.resourcePrefix}sprites/types/${name.replace(/\?/g, '%3f')}.png`} alt={name} height="14" width="32" class="pixelated" />
 			</span>
 
 			{errorMessage}

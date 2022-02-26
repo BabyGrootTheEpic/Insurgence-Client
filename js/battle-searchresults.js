@@ -77,7 +77,7 @@ preact.h("span",{"class":"col pokemonnamecol"},this.renderName(pokemon.name,matc
 
 preact.h("span",{"class":"col typecol"},
 pokemon.types.map(function(type){return(
-preact.h("img",{src:Dex.resourcePrefix+"sprites/types/"+type+".png",alt:type,height:"14",width:"32","class":"pixelated"}));})),
+preact.h("img",{src:Dex.resourcePrefix+"sprites/types/"+type.replace(/\?/g,'%3f')+".png",alt:type,height:"14",width:"32","class":"pixelated"}));})),
 
 
 
@@ -192,7 +192,7 @@ return preact.h("li",{"class":"result"},preact.h("a",{href:this.URL_ROOT+"move/"
 preact.h("span",{"class":"col movenamecol"},this.renderName(move.name,matchStart,matchEnd,tagStart)),
 
 preact.h("span",{"class":"col typecol"},
-preact.h("img",{src:Dex.resourcePrefix+"sprites/types/"+move.type+".png",alt:move.type,height:"14",width:"32","class":"pixelated"}),
+preact.h("img",{src:Dex.resourcePrefix+"sprites/types/"+move.type.replace(/\?/g,'%3f')+".png",alt:move.type,height:"14",width:"32","class":"pixelated"}),
 preact.h("img",{src:Dex.resourcePrefix+"sprites/categories/"+move.category+".png",alt:move.category,height:"14",width:"32","class":"pixelated"})),
 
 
@@ -219,7 +219,7 @@ return preact.h("li",{"class":"result"},preact.h("a",{href:this.URL_ROOT+"types/
 preact.h("span",{"class":"col namecol"},this.renderName(name,matchStart,matchEnd)),
 
 preact.h("span",{"class":"col typecol"},
-preact.h("img",{src:Dex.resourcePrefix+"sprites/types/"+name+".png",alt:name,height:"14",width:"32","class":"pixelated"})),
+preact.h("img",{src:Dex.resourcePrefix+"sprites/types/"+name.replace(/\?/g,'%3f')+".png",alt:name,height:"14",width:"32","class":"pixelated"})),
 
 
 errorMessage));
