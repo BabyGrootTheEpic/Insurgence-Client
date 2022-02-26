@@ -639,6 +639,7 @@ const Dex = new class implements ModdedDex {
 			}
 			
 
+
 			spriteData.url += dir + '/' + name + '.png';
 		}
 

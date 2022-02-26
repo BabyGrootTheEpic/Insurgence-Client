@@ -752,6 +752,7 @@ const BattlePokemonIconIndexes: {[id: string]: number} = {
 	hoopadelta: 1380 + 223,
 	hoopadeltaunbound: 1380 + 224,
 	ufi: 1380 + 225,
+	//For some reason, changing MissingNo's icon also changes the 'empty slot' icon in doubles battles. Pokémon with no icon still use the ? icon.
 	missingno: 1380 + 226,
 
 	poliwrathmega: 1608 + 0,
