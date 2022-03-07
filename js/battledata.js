@@ -639,6 +639,7 @@ name+='-f';
 }
 
 
+
 spriteData.url+=dir+'/'+name+'.png';
 }
 
@@ -1447,6 +1448,8 @@ gengargmax:1116+55,
 kinglergmax:1116+56,
 laprasgmax:1116+57,
 eeveegmax:1116+58,
+eeveestartergmax:1116+58,
+eeveetutoredgmax:1116+58,
 snorlaxgmax:1116+59,
 garbodorgmax:1116+60,
 melmetalgmax:1116+61,
@@ -1772,16 +1775,25 @@ goodradelta:1380+217,
 regirockdelta:1380+218,
 regicedelta:1380+219,
 registeeldelta:1380+220,
-meloettadeltamime:1380+221,
+meloettadelta:1380+221,
 meloettadeltamagician:1380+222,
 hoopadelta:1380+223,
 hoopadeltaunbound:1380+224,
 ufi:1380+225,
+
 missingno:1380+226,
 
 poliwrathmega:1608+0,
 marowakmega:1608+1,
-eeveepremegamegabase:1608+2,
+eeveemegabase:1608+2,
+eeveemegav:1608+2,
+eeveemegaj:1608+2,
+eeveemegaf:1608+2,
+eeveemegae:1608+2,
+eeveemegau:1608+2,
+eeveemegal:1608+2,
+eeveemegag:1608+2,
+eeveemegas:1608+2,
 meganiummega:1608+3,
 typhlosionmega:1608+4,
 feraligatrmega:1608+5,
@@ -1815,6 +1827,7 @@ sunflorafmega:1608+32,
 venusaurdeltamegaf:1608+33,
 
 mewtwoarmor:1644+0,
+mewtwostrangemachine:1644+0,
 mewtwoshadow:1644+1,
 mewtwoshadowmega:1644+2,
 mewspace:1644+3,

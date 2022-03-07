@@ -442,6 +442,7 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 					[
 						'Aegislash', 'Castform', 'Cherrim', 'Cramorant', 'Eiscue', 'Meloetta', 'Minior', 'Morpeko', 'Wishiwashi',
 					].includes(species.baseSpecies) || species.forme.includes('Zen') || species.forme.includes('Busted')
+					|| ['Eevee-Mega-V', 'Eevee-Mega-J', 'Eevee-Mega-F', 'Eevee-Mega-E', 'Eevee-Mega-U', 'Eevee-Mega-L', 'Eevee-Mega-G', 'Eevee-Mega-S'].includes(species.name)
 				) {
 					continue;
 				}
