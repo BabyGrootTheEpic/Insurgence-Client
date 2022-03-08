@@ -939,7 +939,7 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 		if (isVGCOrBS) {
 			if (
 				format === 'vgc2010' || format === 'vgc2016' || format.startsWith('vgc2019') ||
-				format === 'vgc2022' || format.endsWith('series10') || format.endsWith('series11') || format.endsWith('2R')
+				format === 'vgc2022' || format.endsWith('series10') || format.endsWith('series11') || format.endsWith('2r')
 			) {
 				tierSet = tierSet.slice(slices["Restricted Legendary"]);
 			} else {
@@ -1119,20 +1119,20 @@ class BattleAbilitySearch extends BattleTypedSearch<'ability'> {
 			}
 
 			let goodAbilities: SearchRow[] = [['header', "Abilities"]];
-			//let poorAbilities: SearchRow[] = [['header', "Situational Abilities"]];
-			//let badAbilities: SearchRow[] = [['header', "Unviable Abilities"]];
+			let poorAbilities: SearchRow[] = [['header', "Situational Abilities"]];
+			let badAbilities: SearchRow[] = [['header', "Unviable Abilities"]];
 			for (const ability of abilities.sort().map(abil => dex.abilities.get(abil))) {
 				let rating = ability.rating;
 				if (ability.id === 'normalize') rating = 3;
-				//if (rating >= 3) {
+				if (rating >= 3) {
 					goodAbilities.push(['ability', ability.id]);
-				/*} else if (rating >= 2) {
+				} else if (rating >= 2) {
 					poorAbilities.push(['ability', ability.id]);
 				} else {
 					badAbilities.push(['ability', ability.id]);
-				}*/
+				}
 			}
-			abilitySet = [...goodAbilities];//, ...poorAbilities, ...badAbilities];
+			abilitySet = [...goodAbilities, ...poorAbilities, ...badAbilities];
 			if (species.isMega) {
 				if (isAAA) {
 					abilitySet.unshift(['html', `Will be <strong>${species.abilities['0']}</strong> after Mega Evolving.`]);

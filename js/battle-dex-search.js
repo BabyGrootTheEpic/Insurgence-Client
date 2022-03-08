@@ -939,7 +939,7 @@ var slices=table.formatSlices;
 if(isVGCOrBS){
 if(
 format==='vgc2010'||format==='vgc2016'||format.startsWith('vgc2019')||
-format==='vgc2022'||format.endsWith('series10')||format.endsWith('series11')||format.endsWith('2R'))
+format==='vgc2022'||format.endsWith('series10')||format.endsWith('series11')||format.endsWith('2r'))
 {
 tierSet=tierSet.slice(slices["Restricted Legendary"]);
 }else{
@@ -1118,21 +1118,21 @@ if(ability.gen>dex.gen)continue;
 abilities.push(ability.id);
 }
 
-var goodAbilities=[['header',"Abilities"]];for(var _i6=0,_abilities$sort$map=
-
-
+var goodAbilities=[['header',"Abilities"]];
+var poorAbilities=[['header',"Situational Abilities"]];
+var badAbilities=[['header',"Unviable Abilities"]];for(var _i6=0,_abilities$sort$map=
 abilities.sort().map(function(abil){return dex.abilities.get(abil);});_i6<_abilities$sort$map.length;_i6++){var _ability=_abilities$sort$map[_i6];
 var rating=_ability.rating;
 if(_ability.id==='normalize')rating=3;
-
+if(rating>=3){
 goodAbilities.push(['ability',_ability.id]);
-
-
-
-
-
+}else if(rating>=2){
+poorAbilities.push(['ability',_ability.id]);
+}else{
+badAbilities.push(['ability',_ability.id]);
 }
-abilitySet=[].concat(goodAbilities);
+}
+abilitySet=[].concat(goodAbilities,poorAbilities,badAbilities);
 if(species.isMega){
 if(isAAA){
 abilitySet.unshift(['html',"Will be <strong>"+species.abilities['0']+"</strong> after Mega Evolving."]);
