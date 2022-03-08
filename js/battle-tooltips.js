@@ -709,7 +709,7 @@ text+='<p>&#x25ce; Can target any foe in Free-For-All.</p>';
 }
 
 if(move.flags.defrost){
-text+="<p class=\"movetag\">The user thaws out if it is frozen.</p>";
+text+="<p class=\"movetag\">The user's freeze or frostbite is cured. The targets' frostbite is also cured.</p>";
 }
 if(!move.flags.protect&&!['self','allySide'].includes(move.target)){
 text+="<p class=\"movetag\">Not blocked by Protect <small>(and Detect, King's Shield, Spiky Shield)</small></p>";
@@ -1002,6 +1002,10 @@ if(this.battle.gen>2&&ability==='guts'){
 stats.atk=Math.floor(stats.atk*1.5);
 }else if(this.battle.gen<2&&pokemon.status==='brn'){
 stats.atk=Math.floor(stats.atk*0.5);
+}
+
+if(this.battle.gen<2&&pokemon.status==='fsb'){
+stats.atk=Math.floor(stats.spa*0.5);
 }
 
 if(this.battle.gen>2&&ability==='quickfeet'){
@@ -1762,8 +1766,11 @@ value.abilityModify(1.5,"Technician");
 if(['psn','tox'].includes(pokemon.status)&&move.category==='Physical'){
 value.abilityModify(1.5,"Toxic Boost");
 }
-if(this.battle.gen>2&&serverPokemon.status==='brn'&&move.id!=='facade'&&move.category==='Physical'){
+if(this.battle.gen>2&&serverPokemon.status==='brn'&&move.id!=='facade'&&move.id!=='barbbarage'&&move.category==='Physical'){
 if(!value.tryAbility("Guts"))value.modify(0.5,'Burn');
+}
+if(this.battle.gen>2&&serverPokemon.status==='fsb'&&move.id!=='bittermalice'&&move.id!=='infernalparade'&&move.category==='Special'){
+value.modify(0.5,'Frostbite');
 }
 if(['Rock','Ground','Steel'].includes(moveType)&&this.battle.weather==='sandstorm'){
 if(value.tryAbility("Sand Force"))value.weatherModify(1.3,"Sandstorm","Sand Force");

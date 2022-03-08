@@ -2907,6 +2907,8 @@ export class PokemonSprite extends Sprite {
 			status += '<span class="par">PAR</span> ';
 		} else if (pokemon.status === 'frz') {
 			status += '<span class="frz">FRZ</span> ';
+		} else if (pokemon.status === 'fsb') {
+			status += '<span class="fsb">FSB</span> ';
 		}
 		if (pokemon.volatiles.typechange && pokemon.volatiles.typechange[1]) {
 			const types = pokemon.volatiles.typechange[1].split('/');
@@ -6260,3 +6262,4 @@ export const BattleStatusAnims: AnimTable = {
 	},
 };
 BattleStatusAnims['focuspunch'] = {anim: BattleStatusAnims['flinch'].anim};
+BattleStatusAnims['fsb'] = {anim: BattleStatusAnims['frz'].anim};

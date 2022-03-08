@@ -574,6 +574,7 @@ abstract class BattleTypedSearch<T extends SearchType> {
 		this.baseResults = null;
 		this.baseIllegalResults = null;
 
+		const formatid = format;
 		if (format.slice(0, 3) === 'gen') {
 			const gen = (Number(format.charAt(3)) || 6);
 			format = (format.slice(4) || 'customgame') as ID;
@@ -582,7 +583,7 @@ abstract class BattleTypedSearch<T extends SearchType> {
 			this.dex = Dex;
 		}
 
-		if (format.startsWith('dlc1')) {
+		/*if (format.startsWith('dlc1')) {
 			if (format.includes('doubles')) {
 				this.formatType = 'dlc1doubles';
 			} else {
@@ -626,7 +627,20 @@ abstract class BattleTypedSearch<T extends SearchType> {
 			format = format.slice(3) as ID;
 			this.formatType = 'nfe';
 			if (!format) format = 'ou' as ID;
+		}*/
+
+		//Checks if the format isn't a singles format.
+		let formatName = "";
+		if(window.BattleFormats[formatid]) formatName = window.BattleFormats[formatid].name; //Full name of the format, not the id version.
+		if(
+			formatName.includes('] (D)') || format.startsWith('doubles') || format.endsWith('doubles') ||
+			formatName.includes('] (T)') || format.startsWith('triples') || format.endsWith('triples') ||
+			formatName.includes('] (M)') || format.startsWith('multis') || format.endsWith('multis') ||
+			formatName.includes('] (F)') || format.startsWith('ffa') || format.endsWith('ffa') || format.startsWith('freeforall') || format.endsWith('freeforall')
+		) {
+			this.formatType = 'doubles';
 		}
+
 		this.format = format;
 
 		this.species = '' as ID;
@@ -780,7 +794,8 @@ abstract class BattleTypedSearch<T extends SearchType> {
 		return false;
 	}
 	getTier(pokemon: Species) {
-		if (this.formatType === 'metronome' || this.formatType === 'natdex') {
+		return String(pokemon.num);
+		/*if (this.formatType === 'metronome' || this.formatType === 'natdex') {
 			return pokemon.num >= 0 ? String(pokemon.num) : pokemon.tier;
 		}
 		let table = window.BattleTeambuilderTable;
@@ -811,7 +826,7 @@ abstract class BattleTypedSearch<T extends SearchType> {
 			return table.overrideTier[id];
 		}
 
-		return pokemon.tier;
+		return pokemon.tier;*/
 	}
 	abstract getTable(): {[id: string]: any};
 	abstract getDefaultResults(): SearchRow[];
@@ -869,12 +884,14 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 	getBaseResults(): SearchRow[] {
 		const format = this.format;
 		if (!format) return this.getDefaultResults();
-		const isVGCOrBS = format.startsWith('battlespot') || format.startsWith('battlestadium') || format.startsWith('vgc');
-		let isDoublesOrBS = isVGCOrBS || this.formatType?.includes('doubles');
+		const isVGCOrBS = format.startsWith('battlespot') || format.startsWith('battlestadium') || format.startsWith('vgc') || format.includes('flatrules');
+		let isDoubles = this.formatType?.includes('doubles') || format.startsWith('vgc');
 		const dex = this.dex;
 
 		let table = BattleTeambuilderTable;
-		if ((format.endsWith('cap') || format.endsWith('caplc')) && dex.gen < 8) {
+		if(isVGCOrBS) table = table['gen' + dex.gen + 'vgc'];
+		else if(dex.gen < 8) table = table['gen' + dex.gen];
+		/*if ((format.endsWith('cap') || format.endsWith('caplc')) && dex.gen < 8) {
 			table = table['gen' + dex.gen];
 		} else if (isVGCOrBS) {
 			table = table['gen' + dex.gen + 'vgc'];
@@ -908,7 +925,7 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 			}
 		} else if (this.formatType === 'stadium') {
 			table = table['gen' + dex.gen + 'stadium' + (dex.gen > 1 ? dex.gen : '')];
-		}
+		}*/
 
 		if (!table.tierSet) {
 			table.tierSet = table.tiers.map((r: any) => {
@@ -919,7 +936,22 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 		}
 		let tierSet: SearchRow[] = table.tierSet;
 		let slices: {[k: string]: number} = table.formatSlices;
-		if (format === 'ubers' || format === 'uber') tierSet = tierSet.slice(slices.Uber);
+		if (isVGCOrBS) {
+			if (
+				format === 'vgc2010' || format === 'vgc2016' || format.startsWith('vgc2019') ||
+				format === 'vgc2022' || format.endsWith('series10') || format.endsWith('series11') || format.endsWith('2R')
+			) {
+				tierSet = tierSet.slice(slices["Restricted Legendary"]);
+			} else {
+				tierSet = tierSet.slice(slices.Regular);
+			}
+		}
+		else if (format.includes('hackmons') || format.endsWith('bh')) tierSet = tierSet.slice(slices.AG || slices.Uber);
+		else if (isDoubles || format.startsWith('anythinggoes') || format.endsWith('goes') || format.endsWith('ag') || format.startsWith('ag')) {
+			tierSet = tierSet.slice(slices.AG);
+		}
+		else tierSet = tierSet.slice(slices.Uber);
+		/*if (format === 'ubers' || format === 'uber') tierSet = tierSet.slice(slices.Uber);
 		else if (isVGCOrBS) {
 			if (
 				format === 'vgc2010' || format === 'vgc2016' || format.startsWith('vgc2019') ||
@@ -962,7 +994,7 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 				...tierSet.slice(slices.DUber, slices.DOU),
 				...tierSet.slice(slices.DUU),
 			];
-		}
+		}*/
 
 		if (dex.gen >= 5) {
 			if (format === 'zu' && table.zuBans) {
@@ -1003,8 +1035,8 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 				if (species.eggGroups[0] !== value && species.eggGroups[1] !== value) return false;
 				break;
 			case 'tier':
-				if (this.getTier(species) !== value) return false;
-				break;
+				/*if (this.getTier(species) !== value)*/ return false;
+				//break;
 			case 'ability':
 				if (!Dex.hasAbility(species, value)) return false;
 				break;
@@ -1056,7 +1088,7 @@ class BattleAbilitySearch extends BattleTypedSearch<'ability'> {
 		if (!this.species) return this.getDefaultResults();
 		const format = this.format;
 		const isHackmons = (format.includes('hackmons') || format.endsWith('bh'));
-		const isAAA = (format === 'almostanyability' || format.includes('aaa'));
+		const isAAA = (format.includes('anyability') || format.includes('aaa'));
 		const dex = this.dex;
 		let species = dex.species.get(this.species);
 		let abilitySet: SearchRow[] = [['header', "Abilities"]];
@@ -1087,20 +1119,20 @@ class BattleAbilitySearch extends BattleTypedSearch<'ability'> {
 			}
 
 			let goodAbilities: SearchRow[] = [['header', "Abilities"]];
-			let poorAbilities: SearchRow[] = [['header', "Situational Abilities"]];
-			let badAbilities: SearchRow[] = [['header', "Unviable Abilities"]];
+			//let poorAbilities: SearchRow[] = [['header', "Situational Abilities"]];
+			//let badAbilities: SearchRow[] = [['header', "Unviable Abilities"]];
 			for (const ability of abilities.sort().map(abil => dex.abilities.get(abil))) {
 				let rating = ability.rating;
 				if (ability.id === 'normalize') rating = 3;
-				if (rating >= 3) {
+				//if (rating >= 3) {
 					goodAbilities.push(['ability', ability.id]);
-				} else if (rating >= 2) {
+				/*} else if (rating >= 2) {
 					poorAbilities.push(['ability', ability.id]);
 				} else {
 					badAbilities.push(['ability', ability.id]);
-				}
+				}*/
 			}
-			abilitySet = [...goodAbilities, ...poorAbilities, ...badAbilities];
+			abilitySet = [...goodAbilities];//, ...poorAbilities, ...badAbilities];
 			if (species.isMega) {
 				if (isAAA) {
 					abilitySet.unshift(['html', `Will be <strong>${species.abilities['0']}</strong> after Mega Evolving.`]);
@@ -1412,6 +1444,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		const format = this.format;
 		const isHackmons = (format.includes('hackmons') || format.endsWith('bh'));
 		const isSTABmons = (format.includes('stabmons') || format === 'staaabmons');
+		const isAlphabetCup = format.includes('alphabet');
 		const isTradebacks = format.includes('tradebacks');
 		const galarBornLegality = ((/^battle(stadium|festival)/.test(format) || format.startsWith('vgc')) &&
 			this.dex.gen === 8);
@@ -1530,6 +1563,24 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 					}
 				}
 				if (valid) moves.push(id);
+			}
+		}
+		if (isAlphabetCup) {
+			for (let id in this.getTable()) {
+				const move = dex.moves.get(id);
+				if (moves.includes(move.id)) continue;
+				if (move.gen > dex.gen) continue;
+				if (move.isZ || move.isMax || move.isNonstandard) continue;
+
+				const letters = [species.id.charAt(0)];
+				let prevo = species.prevo;
+				if (species.changesFrom === 'Silvally') prevo = 'Type: Null';
+				while (prevo) {
+					const prevoSpecies = this.dex.species.get(prevo);
+					letters.push(prevoSpecies.id.charAt(0));
+					prevo = prevoSpecies.prevo;
+				}
+				if (letters.includes(move.id.charAt(0))) moves.push(id);
 			}
 		}
 

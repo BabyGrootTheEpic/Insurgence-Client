@@ -2907,6 +2907,8 @@ status+='<span class="slp">SLP</span> ';
 status+='<span class="par">PAR</span> ';
 }else if(pokemon.status==='frz'){
 status+='<span class="frz">FRZ</span> ';
+}else if(pokemon.status==='fsb'){
+status+='<span class="fsb">FSB</span> ';
 }
 if(pokemon.volatiles.typechange&&pokemon.volatiles.typechange[1]){
 var types=pokemon.volatiles.typechange[1].split('/');for(var _i17=0;_i17<
@@ -6260,4 +6262,5 @@ time:300},
 
 
 BattleStatusAnims['focuspunch']={anim:BattleStatusAnims['flinch'].anim};
+BattleStatusAnims['fsb']={anim:BattleStatusAnims['frz'].anim};
 //# sourceMappingURL=battle-animations.js.map

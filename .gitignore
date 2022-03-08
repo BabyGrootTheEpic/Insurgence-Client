@@ -1,3 +1,6 @@
 /data/*
 node_modules/
 sprites/
+
+!/data/pokedex-mini.js
+!/data/pokedex-mini-bw.js

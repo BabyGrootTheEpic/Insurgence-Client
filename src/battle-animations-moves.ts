@@ -32725,6 +32725,7 @@ BattleMoveAnims['spiritaway'] = {
 
 //Custom:
 BattleMoveAnims['giveballoon'] = {anim: BattleMoveAnims['fling'].anim};
+BattleMoveAnims['frigidwind'] = {anim: BattleMoveAnims['icywind'].anim};
 
 //Legends Arceus:
 BattleMoveAnims['mysticalpower'] = {anim: BattleMoveAnims['psychic'].anim};

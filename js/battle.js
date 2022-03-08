@@ -1634,6 +1634,9 @@ switch(effect.id){
 case'brn':
 this.scene.runStatusAnim('brn',[poke]);
 break;
+case'fsb':
+this.scene.runStatusAnim('fsb',[poke]);
+break;
 case'psn':
 this.scene.runStatusAnim('psn',[poke]);
 break;
@@ -1945,6 +1948,9 @@ switch(_effect6.id){
 case'brn':
 this.scene.resultAnim(_poke15,'Already burned','neutral');
 break;
+case'fsb':
+this.scene.resultAnim(_poke15,'Already has frostibte','neutral');
+break;
 case'tox':
 case'psn':
 this.scene.resultAnim(_poke15,'Already poisoned','neutral');
@@ -2048,6 +2054,10 @@ case'brn':
 this.scene.resultAnim(_poke20,'Burned','brn');
 this.scene.runStatusAnim('brn',[_poke20]);
 break;
+case'fsb':
+this.scene.resultAnim(_poke20,'Frostbite','fsb');
+this.scene.runStatusAnim('fsb',[_poke20]);
+break;
 case'tox':
 this.scene.resultAnim(_poke20,'Toxic poison','psn');
 this.scene.runStatusAnim('psn',[_poke20]);
@@ -2099,6 +2109,9 @@ _poke21.status='';
 switch(args[2]){
 case'brn':
 this.scene.resultAnim(_poke21,'Burn cured','good');
+break;
+case'fsb':
+this.scene.resultAnim(_poke21,'Frostbite cured','good');
 break;
 case'tox':
 case'psn':
@@ -3062,7 +3075,7 @@ output.hp=output.maxhp*parseFloat(hp)/100;
 
 if(!status){
 output.status='';
-}else if(status==='par'||status==='brn'||status==='slp'||status==='frz'||status==='tox'){
+}else if(status==='par'||status==='brn'||status==='slp'||status==='frz'||status==='tox'||status==='fsb'){
 output.status=status;
 }else if(status==='psn'&&output.status!=='tox'){
 output.status=status;

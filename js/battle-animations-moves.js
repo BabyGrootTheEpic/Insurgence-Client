@@ -32725,6 +32725,7 @@ prepareAnim:BattleMoveAnims['skydrop'].prepareAnim};
 
 
 BattleMoveAnims['giveballoon']={anim:BattleMoveAnims['fling'].anim};
+BattleMoveAnims['frigidwind']={anim:BattleMoveAnims['icywind'].anim};
 
 
 BattleMoveAnims['mysticalpower']={anim:BattleMoveAnims['psychic'].anim};
