@@ -1087,7 +1087,7 @@ return results;
 getBaseResults=function getBaseResults(){
 if(!this.species)return this.getDefaultResults();
 var format=this.format;
-var isHackmons=format.includes('hackmons')||format.endsWith('bh');
+var isHackmons=format.includes('hackmons')||format.endsWith('bh')||format.includes('custom');
 var isAAA=format.includes('anyability')||format.includes('aaa');
 var dex=this.dex;
 var species=dex.species.get(this.species);
@@ -1444,7 +1444,7 @@ if(!this.species)return this.getDefaultResults();
 var dex=this.dex;
 var species=dex.species.get(this.species);
 var format=this.format;
-var isHackmons=format.includes('hackmons')||format.endsWith('bh');
+var isHackmons=format.includes('hackmons')||format.endsWith('bh')||format.includes('custom');
 var isSTABmons=format.includes('stabmons')||format==='staaabmons';
 var isAlphabetCup=format.includes('alphabet');
 var isTradebacks=format.includes('tradebacks');
@@ -1514,7 +1514,7 @@ if(_move.isNonstandard&&_move.isNonstandard!=='Past')continue;
 if(_move.isNonstandard==='Past'&&this.formatType!=='natdex')continue;
 sketchMoves.push(_move.id);
 }else{
-if(!(dex.gen<8||this.formatType==='natdex')&&_move.isZ)continue;
+
 if(typeof _move.isMax==='string')continue;
 if(_move.isNonstandard==='Past'&&this.formatType!=='natdex')continue;
 if(_move.isNonstandard==='LGPE'&&this.formatType!=='letsgo')continue;

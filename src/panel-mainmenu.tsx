@@ -142,7 +142,7 @@ class MainMenuRoom extends PSRoom {
 					}
 				}
 				let id = toID(name);
-				let isTeambuilderFormat = !team && name.slice(-11) !== 'Custom Game';
+				let isTeambuilderFormat = !team;// && name.slice(-11) !== 'Custom Game';
 				let teambuilderFormat = '' as ID;
 				let teambuilderFormatName = '';
 				if (isTeambuilderFormat) {

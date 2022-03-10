@@ -1087,7 +1087,7 @@ class BattleAbilitySearch extends BattleTypedSearch<'ability'> {
 	getBaseResults() {
 		if (!this.species) return this.getDefaultResults();
 		const format = this.format;
-		const isHackmons = (format.includes('hackmons') || format.endsWith('bh'));
+		const isHackmons = (format.includes('hackmons') || format.endsWith('bh') || format.includes('custom'));
 		const isAAA = (format.includes('anyability') || format.includes('aaa'));
 		const dex = this.dex;
 		let species = dex.species.get(this.species);
@@ -1444,7 +1444,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		const dex = this.dex;
 		let species = dex.species.get(this.species);
 		const format = this.format;
-		const isHackmons = (format.includes('hackmons') || format.endsWith('bh'));
+		const isHackmons = (format.includes('hackmons') || format.endsWith('bh') || format.includes('custom'));
 		const isSTABmons = (format.includes('stabmons') || format === 'staaabmons');
 		const isAlphabetCup = format.includes('alphabet');
 		const isTradebacks = format.includes('tradebacks');
@@ -1514,7 +1514,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 					if (move.isNonstandard === 'Past' && this.formatType !== 'natdex') continue;
 					sketchMoves.push(move.id);
 				} else {
-					if (!(dex.gen < 8 || this.formatType === 'natdex') && move.isZ) continue;
+					//if (!(dex.gen < 8 || this.formatType === 'natdex') && move.isZ) continue;
 					if (typeof move.isMax === 'string') continue;
 					if (move.isNonstandard === 'Past' && this.formatType !== 'natdex') continue;
 					if (move.isNonstandard === 'LGPE' && this.formatType !== 'letsgo') continue;
