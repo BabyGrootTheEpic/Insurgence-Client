@@ -1591,7 +1591,8 @@ class BattleTooltips {
 		if (move.id === 'eruption' || move.id === 'waterspout' || move.id === 'dragonenergy') {
 			value.set(Math.floor(150 * pokemon.hp / pokemon.maxhp) || 1);
 		}
-		if ((move.id === 'facade' || 'barbbarage' || 'bittermalice' || 'infernalparade') && !['', 'slp', 'frz'].includes(pokemon.status)) {
+		if ((move.id === 'facade' || move.id ==='barbbarrage' || move.id ==='bittermalice' || move.id ==='infernalparade')
+		&& !['', 'slp', 'frz'].includes(pokemon.status)) {
 			value.modify(2, 'Facade + status');
 		}
 		if (move.id === 'flail' || move.id === 'reversal') {
@@ -1766,7 +1767,7 @@ class BattleTooltips {
 		if (['psn', 'tox'].includes(pokemon.status) && move.category === 'Physical') {
 			value.abilityModify(1.5, "Toxic Boost");
 		}
-		if (this.battle.gen > 2 && serverPokemon.status === 'brn' && move.id !== 'facade' && move.id !== 'barbbarage' && move.category === 'Physical') {
+		if (this.battle.gen > 2 && serverPokemon.status === 'brn' && move.id !== 'facade' && move.id !== 'barbbarrage' && move.category === 'Physical') {
 			if (!value.tryAbility("Guts")) value.modify(0.5, 'Burn');
 		}
 		if (this.battle.gen > 2 && serverPokemon.status === 'fsb' && move.id !== 'bittermalice' && move.id !== 'infernalparade' && move.category === 'Special') {
