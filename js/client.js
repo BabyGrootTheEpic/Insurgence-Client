@@ -1292,7 +1292,7 @@ function toId() {
 						}
 					}
 					var id = toID(name);
-					var isTeambuilderFormat = !team && name.slice(-11) !== 'Custom Game';
+					var isTeambuilderFormat = !team;// && name.slice(-11) !== 'Custom Game';
 					var teambuilderFormat = '';
 					var teambuilderFormatName = '';
 					if (isTeambuilderFormat) {

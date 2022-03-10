@@ -946,8 +946,8 @@ tierSet=tierSet.slice(slices["Restricted Legendary"]);
 tierSet=tierSet.slice(slices.Regular);
 }
 }else
-if(format.includes('hackmons')||format.endsWith('bh'))tierSet=tierSet.slice(slices.AG||slices.Uber);else
-if(isDoubles||format.startsWith('anythinggoes')||format.endsWith('goes')||format.endsWith('ag')||format.startsWith('ag')){
+if(isDoubles||format.startsWith('anythinggoes')||format.endsWith('goes')||format.endsWith('ag')||format.startsWith('ag')||
+format.includes('hackmons')||format.endsWith('bh')||format.includes('custom')){
 tierSet=tierSet.slice(slices.AG);
 }else
 tierSet=tierSet.slice(slices.Uber);
