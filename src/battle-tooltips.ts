@@ -1764,6 +1764,9 @@ class BattleTooltips {
 		}
 		if (!value.value) return value;
 
+		//Victory Dance
+		if (pokemon.volatiles['victorydance']) value.modify(1.5, 'Victory Dance');
+
 		// Other ability boosts
 		if (pokemon.status === 'brn' && move.category === 'Special') {
 			value.abilityModify(1.5, "Flare Boost");

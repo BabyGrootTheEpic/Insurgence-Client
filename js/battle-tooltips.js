@@ -1765,6 +1765,9 @@ value.setRange(isGKLK?20:40,120);
 if(!value.value)return value;
 
 
+if(pokemon.volatiles['victorydance'])value.modify(1.5,'Victory Dance');
+
+
 if(pokemon.status==='brn'&&move.category==='Special'){
 value.abilityModify(1.5,"Flare Boost");
 }

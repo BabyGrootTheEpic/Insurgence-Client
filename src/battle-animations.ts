@@ -1965,6 +1965,7 @@ export class PokemonSprite extends Sprite {
 		magnetrise: ['Magnet Rise', 'good'],
 		smackdown: ['Smack Down', 'bad'],
 		focusenergy: ['Critical Hit Boost', 'good'],
+		victorydance: ['Victory Dance', 'good'],
 		slowstart: ['Slow Start', 'bad'],
 		noretreat: ['No Retreat', 'bad'],
 		octolock: ['Octolock', 'bad'],
