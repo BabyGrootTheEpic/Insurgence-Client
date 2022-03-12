@@ -595,13 +595,13 @@ process.stdout.write("Building `data/teambuilder-tables.js`... ");
 			} else if (tier === "(NU)") {
 				tiers.push(['header', "Below NU"]);
 			} else if (tier === "(PU)") {
-				tiers.push(['header', "Below PU"]);
+				tiers.push(['header', "Untiered"]);
 			} else if (tier === "(DUU)") {
 				tiers.push(['header', "Below DUU"]);
 			} else if (tier.charAt(0) === '(') {
 				tiers.push(['header', tier.slice(1, -1) + " by technicality"]);
 			} else if (tier === "NFE") {
-				tiers.push(['header', "NFEs not in a higher tier"]);
+				tiers.push(['header', "NFE"]);
 			} else {
 				tiers.push(['header', tier]);
 			}
