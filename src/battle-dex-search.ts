@@ -1508,17 +1508,17 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 				if (!format.startsWith('cap') && (id === 'paleowave' || id === 'shadowstrike')) continue;
 				const move = dex.moves.get(id);
 				if (move.gen > dex.gen) continue;
-				if (sketch) {
-					if (move.noSketch || move.isMax || move.isZ) continue;
-					if (move.isNonstandard && move.isNonstandard !== 'Past') continue;
-					if (move.isNonstandard === 'Past' && this.formatType !== 'natdex') continue;
-					sketchMoves.push(move.id);
-				} else {
+				if (isHackmons) {
 					//if (!(dex.gen < 8 || this.formatType === 'natdex') && move.isZ) continue;
 					if (typeof move.isMax === 'string') continue;
 					if (move.isNonstandard === 'Past' && this.formatType !== 'natdex') continue;
 					if (move.isNonstandard === 'LGPE' && this.formatType !== 'letsgo') continue;
 					moves.push(move.id);
+				} else {
+					if (move.noSketch || move.isMax || move.isZ) continue;
+					if (move.isNonstandard && move.isNonstandard !== 'Past') continue;
+					if (move.isNonstandard === 'Past' && this.formatType !== 'natdex') continue;
+					sketchMoves.push(move.id);
 				}
 			}
 		}

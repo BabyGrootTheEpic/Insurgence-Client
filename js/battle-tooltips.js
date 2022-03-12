@@ -519,6 +519,10 @@ return boostText;
 
 
 
+
+
+
+
 getMaxMoveFromType=function getMaxMoveFromType(type,gmaxMove){
 if(gmaxMove){
 gmaxMove=Dex.moves.get(gmaxMove);
@@ -577,7 +581,7 @@ case'hail':
 zMove=this.battle.dex.moves.get(BattleTooltips.zMoveTable['Ice']);
 break;
 case'darkness':
-zMove=this.battle.dex.getMove(BattleTooltips.zMoveTable['Dark']);
+zMove=this.battle.dex.moves.get(BattleTooltips.zMoveTable['Dark']);
 break;}
 
 }
@@ -968,12 +972,17 @@ return false;
 calculateModifiedStats=function calculateModifiedStats(clientPokemon,serverPokemon){var _clientPokemon$effect,_clientPokemon$volati;
 var stats=Object.assign({},serverPokemon.stats);
 var pokemon=clientPokemon||serverPokemon;
-var isPowerTrick=clientPokemon==null?void 0:clientPokemon.volatiles['powertrick'];for(var _i10=0,_Dex$statNamesExceptH=
+var isPowerTrick=clientPokemon==null?void 0:clientPokemon.volatiles['powertrick'];
+var isPowerShift=clientPokemon==null?void 0:clientPokemon.volatiles['powershift'];for(var _i10=0,_Dex$statNamesExceptH=
 Dex.statNamesExceptHP;_i10<_Dex$statNamesExceptH.length;_i10++){var statName=_Dex$statNamesExceptH[_i10];
 var sourceStatName=statName;
-if(isPowerTrick){
+if(isPowerTrick||isPowerShift){
 if(statName==='atk')sourceStatName='def';
 if(statName==='def')sourceStatName='atk';
+}
+if(isPowerShift){
+if(statName==='spa')sourceStatName='spd';
+if(statName==='spd')sourceStatName='spa';
 }
 stats[statName]=serverPokemon.stats[sourceStatName];
 if(!clientPokemon)continue;
@@ -1005,7 +1014,7 @@ stats.atk=Math.floor(stats.atk*0.5);
 }
 
 if(this.battle.gen<2&&pokemon.status==='fsb'){
-stats.atk=Math.floor(stats.spa*0.5);
+stats.spa=Math.floor(stats.spa*0.5);
 }
 
 if(this.battle.gen>2&&ability==='quickfeet'){
@@ -1106,8 +1115,8 @@ speedModifiers.push(2);
 if(ability==='slushrush'&&weather==='hail'){
 speedModifiers.push(2);
 }
-if(ability==='shadowdance'&&weather==='newmoon'){
-stats.spe*=2;
+if(ability==='shadowdance'&&weather==='darkness'){
+speedModifiers.push(2);
 }
 if(item!=='utilityumbrella'){
 if(weather==='sunnyday'||weather==='desolateland'){
@@ -1127,10 +1136,7 @@ stats.spd=Math.floor(stats.spd*1.5);
 }
 }
 if(ability==='supercell'&&(weather==='raindance'||weather==='primordialsea'||weather==='darkness')){
-stats.spa*=1.5;
-}
-if(ability==='absolution'&&weather==='darkness'){
-stats.spa*=1.5;
+stats.spa=Math.floor(stats.spa*1.5);
 }
 if(ability==='chlorophyll'&&(weather==='sunnyday'||weather==='desolateland')){
 speedModifiers.push(2);
@@ -1138,6 +1144,11 @@ speedModifiers.push(2);
 if(ability==='swiftswim'&&(weather==='raindance'||weather==='primordialsea')){
 speedModifiers.push(2);
 }
+}else if(ability==='supercell'&&weather==='darkness'){
+stats.spa=Math.floor(stats.spa*1.5);
+}
+if(ability==='absolution'&&weather==='darkness'){
+stats.spa=Math.floor(stats.spa*1.5);
 }
 }
 if(ability==='defeatist'&&serverPokemon.hp<=serverPokemon.maxhp/2){
@@ -1156,7 +1167,7 @@ speedModifiers.push(2);
 if(ability==='marvelscale'&&pokemon.status){
 stats.def=Math.floor(stats.def*1.5);
 }
-if(item==='eviolite'&&Dex.species.get(pokemon.speciesForme).evos){
+if(item==='eviolite'&&(Dex.species.get(pokemon.speciesForme).evos||species==='Eevee-Tutored')){
 stats.def=Math.floor(stats.def*1.5);
 stats.spd=Math.floor(stats.spd*1.5);
 }
@@ -1462,14 +1473,16 @@ if(move.id==='toxic'&&this.battle.gen>=6&&this.pokemonHasType(pokemon,'Poison'))
 value.set(0,"Poison type");
 return value;
 }
-if(move.id==='blizzard'){
+if(move.id==='blizzard'||move.id==='frigidwind'){
 value.weatherModify(0,'Hail');
 }
 if(move.id==='hurricane'||move.id==='thunder'){
 value.weatherModify(0,'Rain Dance');
 value.weatherModify(0,'Primordial Sea');
 }
+if(!move.ohko){
 value.abilityModify(0,'No Guard');
+}
 if(!value.value)return value;
 
 
@@ -2087,7 +2100,7 @@ if(!text&&abilityData.possibilities.length&&!hidePossible){
 text='<small>Possible abilities:</small> '+abilityData.possibilities.join(', ');
 }
 return text;
-};return BattleTooltips;}();BattleTooltips.LONG_TAP_DELAY=350;BattleTooltips.longTapTimeout=0;BattleTooltips.elem=null;BattleTooltips.parentElem=null;BattleTooltips.isLocked=false;BattleTooltips.isPressed=false;BattleTooltips.zMoveEffects={'clearnegativeboost':"Restores negative stat stages to 0",'crit2':"Crit ratio +2",'heal':"Restores HP 100%",'curse':"Restores HP 100% if user is Ghost type, otherwise Attack +1",'redirect':"Redirects opposing attacks to user",'healreplacement':"Restores replacement's HP 100%"};BattleTooltips.zMoveTable={Poison:"Acid Downpour",Fighting:"All-Out Pummeling",Dark:"Black Hole Eclipse",Grass:"Bloom Doom",Normal:"Breakneck Blitz",Rock:"Continental Crush",Steel:"Corkscrew Crash",Dragon:"Devastating Drake",Electric:"Gigavolt Havoc",Water:"Hydro Vortex",Fire:"Inferno Overdrive",Ghost:"Never-Ending Nightmare",Bug:"Savage Spin-Out",Psychic:"Shattered Psyche",Ice:"Subzero Slammer",Flying:"Supersonic Skystrike",Ground:"Tectonic Rage",Fairy:"Twinkle Tackle","???":""};BattleTooltips.maxMoveTable={Poison:"Max Ooze",Fighting:"Max Knuckle",Dark:"Max Darkness",Grass:"Max Overgrowth",Normal:"Max Strike",Rock:"Max Rockfall",Steel:"Max Steelspike",Dragon:"Max Wyrmwind",Electric:"Max Lightning",Water:"Max Geyser",Fire:"Max Flare",Ghost:"Max Phantasm",Bug:"Max Flutterby",Psychic:"Max Mindstorm",Ice:"Max Hailstorm",Flying:"Max Airstream",Ground:"Max Quake",Fairy:"Max Starfall","???":""};BattleTooltips.incenseTypes={'Odd Incense':'Psychic','Rock Incense':'Rock','Rose Incense':'Grass','Sea Incense':'Water','Wave Incense':'Water'};BattleTooltips.itemTypes={'Black Belt':'Fighting','Black Glasses':'Dark','Charcoal':'Fire','Dragon Fang':'Dragon','Hard Stone':'Rock','Magnet':'Electric','Metal Coat':'Steel','Miracle Seed':'Grass','Mystic Water':'Water','Never-Melt Ice':'Ice','Poison Barb':'Poison','Sharp Beak':'Flying','Silk Scarf':'Normal','Silver Powder':'Bug','Soft Sand':'Ground','Spell Tag':'Ghost','Twisted Spoon':'Psychic'};BattleTooltips.orbUsers={'Latias':'Soul Dew','Latios':'Soul Dew','Dialga':'Adamant Orb','Palkia':'Lustrous Orb','Giratina':'Griseous Orb'};BattleTooltips.orbTypes={'Soul Dew':'Psychic','Adamant Orb':'Steel','Lustrous Orb':'Water','Griseous Orb':'Ghost'};BattleTooltips.noGemMoves=['Fire Pledge','Fling','Grass Pledge','Struggle','Water Pledge'];var
+};return BattleTooltips;}();BattleTooltips.LONG_TAP_DELAY=350;BattleTooltips.longTapTimeout=0;BattleTooltips.elem=null;BattleTooltips.parentElem=null;BattleTooltips.isLocked=false;BattleTooltips.isPressed=false;BattleTooltips.zMoveEffects={'clearnegativeboost':"Restores negative stat stages to 0",'crit2':"Crit ratio +2",'heal':"Restores HP 100%",'curse':"Restores HP 100% if user is Ghost type, otherwise Attack +1",'redirect':"Redirects opposing attacks to user",'healreplacement':"Restores replacement's HP 100%"};BattleTooltips.zMoveTable={Poison:"Acid Downpour",Fighting:"All-Out Pummeling",Dark:"Black Hole Eclipse",Grass:"Bloom Doom",Normal:"Breakneck Blitz",Rock:"Continental Crush",Steel:"Corkscrew Crash",Dragon:"Devastating Drake",Electric:"Gigavolt Havoc",Water:"Hydro Vortex",Fire:"Inferno Overdrive",Ghost:"Never-Ending Nightmare",Bug:"Savage Spin-Out",Psychic:"Shattered Psyche",Ice:"Subzero Slammer",Flying:"Supersonic Skystrike",Ground:"Tectonic Rage",Fairy:"Twinkle Tackle",Crystal:"Breakneck Blitz",'???':"Breakneck Blitz",Shadow:"Black Hole Eclipse"};BattleTooltips.maxMoveTable={Poison:"Max Ooze",Fighting:"Max Knuckle",Dark:"Max Darkness",Grass:"Max Overgrowth",Normal:"Max Strike",Rock:"Max Rockfall",Steel:"Max Steelspike",Dragon:"Max Wyrmwind",Electric:"Max Lightning",Water:"Max Geyser",Fire:"Max Flare",Ghost:"Max Phantasm",Bug:"Max Flutterby",Psychic:"Max Mindstorm",Ice:"Max Hailstorm",Flying:"Max Airstream",Ground:"Max Quake",Fairy:"Max Starfall",Crystal:"Max Crystal",'???':"Max Tesseract",Shadow:"Max Shade"};BattleTooltips.incenseTypes={'Odd Incense':'Psychic','Rock Incense':'Rock','Rose Incense':'Grass','Sea Incense':'Water','Wave Incense':'Water'};BattleTooltips.itemTypes={'Black Belt':'Fighting','Black Glasses':'Dark','Charcoal':'Fire','Dragon Fang':'Dragon','Hard Stone':'Rock','Magnet':'Electric','Metal Coat':'Steel','Miracle Seed':'Grass','Mystic Water':'Water','Never-Melt Ice':'Ice','Poison Barb':'Poison','Sharp Beak':'Flying','Silk Scarf':'Normal','Silver Powder':'Bug','Soft Sand':'Ground','Spell Tag':'Ghost','Twisted Spoon':'Psychic'};BattleTooltips.orbUsers={'Latias':'Soul Dew','Latios':'Soul Dew','Dialga':'Adamant Orb','Palkia':'Lustrous Orb','Giratina':'Griseous Orb'};BattleTooltips.orbTypes={'Soul Dew':'Psychic','Adamant Orb':'Steel','Lustrous Orb':'Water','Griseous Orb':'Ghost'};BattleTooltips.noGemMoves=['Fire Pledge','Fling','Grass Pledge','Struggle','Water Pledge'];var
 
 
 

@@ -1011,7 +1011,7 @@ var blocker=BattleTextParser.effectId(kwArgs.from);
 var _line25=this.maybeAbility(kwArgs.from,kwArgs.of||_pokemon31);
 var _templateId10='block';
 if(['desolateland','primordialsea'].includes(blocker)&&
-!['sunnyday','raindance','sandstorm','hail','newmoon'].includes(_id18)){
+!['sunnyday','raindance','sandstorm','hail','newmoon','darkness'].includes(_id18)){
 _templateId10='blockMove';
 }else if(blocker==='uproar'&&kwArgs.msg){
 _templateId10='blockSelf';

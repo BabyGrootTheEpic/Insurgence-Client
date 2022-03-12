@@ -494,7 +494,9 @@ class BattleTooltips {
 		Flying: "Supersonic Skystrike",
 		Ground: "Tectonic Rage",
 		Fairy: "Twinkle Tackle",
-		"???": "",
+		Crystal: "Breakneck Blitz",
+		'???': "Breakneck Blitz",
+		Shadow: "Black Hole Eclipse",
 	};
 
 	static maxMoveTable: {[type in TypeName]: string} = {
@@ -516,7 +518,9 @@ class BattleTooltips {
 		Flying: "Max Airstream",
 		Ground: "Max Quake",
 		Fairy: "Max Starfall",
-		"???": "",
+		Crystal: "Max Crystal",
+		'???': "Max Tesseract",
+		Shadow: "Max Shade",
 	};
 
 	getMaxMoveFromType(type: TypeName, gmaxMove?: string | Move) {
@@ -577,7 +581,7 @@ class BattleTooltips {
 						zMove = this.battle.dex.moves.get(BattleTooltips.zMoveTable['Ice']);
 						break;
 					case 'darkness':
-						zMove = this.battle.dex.getMove(BattleTooltips.zMoveTable['Dark']);
+						zMove = this.battle.dex.moves.get(BattleTooltips.zMoveTable['Dark']);
 						break;
 					}
 				}
@@ -969,11 +973,16 @@ class BattleTooltips {
 		let stats = {...serverPokemon.stats};
 		let pokemon = clientPokemon || serverPokemon;
 		const isPowerTrick = clientPokemon?.volatiles['powertrick'];
+		const isPowerShift = clientPokemon?.volatiles['powershift'];
 		for (const statName of Dex.statNamesExceptHP) {
 			let sourceStatName = statName;
-			if (isPowerTrick) {
+			if (isPowerTrick || isPowerShift) {
 				if (statName === 'atk') sourceStatName = 'def';
 				if (statName === 'def') sourceStatName = 'atk';
+			}
+			if(isPowerShift) {
+				if (statName === 'spa') sourceStatName = 'spd';
+				if (statName === 'spd') sourceStatName = 'spa';
 			}
 			stats[statName] = serverPokemon.stats[sourceStatName];
 			if (!clientPokemon) continue;
@@ -1005,7 +1014,7 @@ class BattleTooltips {
 			}
 
 			if (this.battle.gen < 2 && pokemon.status === 'fsb') {
-				stats.atk = Math.floor(stats.spa * 0.5);
+				stats.spa = Math.floor(stats.spa * 0.5);
 			}
 
 			if (this.battle.gen > 2 && ability === 'quickfeet') {
@@ -1106,8 +1115,8 @@ class BattleTooltips {
 			if (ability === 'slushrush' && weather === 'hail') {
 				speedModifiers.push(2);
 			}
-			if (ability === 'shadowdance' && weather === 'newmoon') {
-				stats.spe *= 2;
+			if (ability === 'shadowdance' && weather === 'darkness') {
+				speedModifiers.push(2);
 			}
 			if (item !== 'utilityumbrella') {
 				if (weather === 'sunnyday' || weather === 'desolateland') {
@@ -1126,18 +1135,20 @@ class BattleTooltips {
 						}
 					}
 				}
-        if (ability === 'supercell' && (weather === 'raindance' || weather === 'primordialsea' || weather === 'darkness')) {
-          stats.spa *= 1.5;
-        }
-        if (ability === 'absolution' && weather === 'darkness') {
-          stats.spa *= 1.5;
-        }
+				if (ability === 'supercell' && (weather === 'raindance' || weather === 'primordialsea' || weather === 'darkness')) {
+					stats.spa = Math.floor(stats.spa * 1.5);
+				}
 				if (ability === 'chlorophyll' && (weather === 'sunnyday' || weather === 'desolateland')) {
 					speedModifiers.push(2);
 				}
 				if (ability === 'swiftswim' && (weather === 'raindance' || weather === 'primordialsea')) {
 					speedModifiers.push(2);
 				}
+			} else if (ability === 'supercell' && weather === 'darkness') {
+				stats.spa = Math.floor(stats.spa * 1.5);
+			}
+			if (ability === 'absolution' && weather === 'darkness') {
+				stats.spa = Math.floor(stats.spa * 1.5);
 			}
 		}
 		if (ability === 'defeatist' && serverPokemon.hp <= serverPokemon.maxhp / 2) {
@@ -1156,7 +1167,7 @@ class BattleTooltips {
 		if (ability === 'marvelscale' && pokemon.status) {
 			stats.def = Math.floor(stats.def * 1.5);
 		}
-		if (item === 'eviolite' && Dex.species.get(pokemon.speciesForme).evos) {
+		if (item === 'eviolite' && (Dex.species.get(pokemon.speciesForme).evos || species === 'Eevee-Tutored')) {
 			stats.def = Math.floor(stats.def * 1.5);
 			stats.spd = Math.floor(stats.spd * 1.5);
 		}
@@ -1469,7 +1480,9 @@ class BattleTooltips {
 			value.weatherModify(0, 'Rain Dance');
 			value.weatherModify(0, 'Primordial Sea');
 		}
-		value.abilityModify(0, 'No Guard');
+		if (!move.ohko) {
+			value.abilityModify(0, 'No Guard');
+		}
 		if (!value.value) return value;
 
 		// OHKO moves don't use standard accuracy / evasion modifiers

@@ -1508,17 +1508,17 @@ for(var _id10 in BattleMovedex){
 if(!format.startsWith('cap')&&(_id10==='paleowave'||_id10==='shadowstrike'))continue;
 var _move=dex.moves.get(_id10);
 if(_move.gen>dex.gen)continue;
-if(sketch){
-if(_move.noSketch||_move.isMax||_move.isZ)continue;
-if(_move.isNonstandard&&_move.isNonstandard!=='Past')continue;
-if(_move.isNonstandard==='Past'&&this.formatType!=='natdex')continue;
-sketchMoves.push(_move.id);
-}else{
+if(isHackmons){
 
 if(typeof _move.isMax==='string')continue;
 if(_move.isNonstandard==='Past'&&this.formatType!=='natdex')continue;
 if(_move.isNonstandard==='LGPE'&&this.formatType!=='letsgo')continue;
 moves.push(_move.id);
+}else{
+if(_move.noSketch||_move.isMax||_move.isZ)continue;
+if(_move.isNonstandard&&_move.isNonstandard!=='Past')continue;
+if(_move.isNonstandard==='Past'&&this.formatType!=='natdex')continue;
+sketchMoves.push(_move.id);
 }
 }
 }
