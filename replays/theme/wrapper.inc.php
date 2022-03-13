@@ -24,12 +24,12 @@ function ThemeHeaderTemplate() {
 <?php } ?>
 
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE8" />
-	<link rel="stylesheet" href="//34.134.251.210/style/font-awesome.css?0.1053645824273266" />
-	<link rel="stylesheet" href="//pokemonshowdown.com/theme/panels.css?0.9790007555073643" />
-	<link rel="stylesheet" href="//pokemonshowdown.com/theme/main.css?0.14816794057107763" />
-	<link rel="stylesheet" href="//34.134.251.210/style/battle.css?0.8162777496152458" />
-	<link rel="stylesheet" href="//34.134.251.210/style/replay.css?0.25523217968178535" />
-	<link rel="stylesheet" href="//34.134.251.210/style/utilichart.css?0.339080068946332" />
+	<link rel="stylesheet" href="//34.134.251.210/style/font-awesome.css?0.6660835465856358" />
+	<link rel="stylesheet" href="//pokemonshowdown.com/theme/panels.css?0.4661485207507914" />
+	<link rel="stylesheet" href="//pokemonshowdown.com/theme/main.css?0.5337326924548884" />
+	<link rel="stylesheet" href="//34.134.251.210/style/battle.css?0.05852865476654023" />
+	<link rel="stylesheet" href="//34.134.251.210/style/replay.css?0.32958576922641036" />
+	<link rel="stylesheet" href="//34.134.251.210/style/utilichart.css?0.8684749030225165" />
 
 	<!-- Workarounds for IE bugs to display trees correctly. -->
 	<!--[if lte IE 6]><style> li.tree { height: 1px; } </style><![endif]-->
@@ -53,11 +53,11 @@ function ThemeHeaderTemplate() {
 	<div class="pfx-topbar">
 		<div class="header">
 			<ul class="nav">
-				<li><a class="button nav-first<?php if ($panels->tab === 'home') echo ' cur'; ?>" href="//pokemonshowdown.com/?0.25735811445546775"><img src="//pokemonshowdown.com/images/pokemonshowdownbeta.png?0.6752320211158023" alt="Pok&eacute;mon Showdown! (beta)" /> Home</a></li>
-				<li><a class="button<?php if ($panels->tab === 'pokedex') echo ' cur'; ?>" href="//dex.pokemonshowdown.com/?0.5508337469022966">Pok&eacute;dex</a></li>
-				<li><a class="button<?php if ($panels->tab === 'replay') echo ' cur'; ?>" href="/?0.7628240448376482">Replays</a></li>
-				<li><a class="button<?php if ($panels->tab === 'ladder') echo ' cur'; ?>" href="//pokemonshowdown.com/ladder/?0.19440466145119406">Ladder</a></li>
-				<li><a class="button nav-last" href="//pokemonshowdown.com/forums/?0.9246394774995272">Forum</a></li>
+				<li><a class="button nav-first<?php if ($panels->tab === 'home') echo ' cur'; ?>" href="//pokemonshowdown.com/?0.6477666124113295"><img src="//pokemonshowdown.com/images/pokemonshowdownbeta.png?0.6502704461899285" alt="Pok&eacute;mon Showdown! (beta)" /> Home</a></li>
+				<li><a class="button<?php if ($panels->tab === 'pokedex') echo ' cur'; ?>" href="//dex.pokemonshowdown.com/?0.9251146239555066">Pok&eacute;dex</a></li>
+				<li><a class="button<?php if ($panels->tab === 'replay') echo ' cur'; ?>" href="/?0.3217746135554138">Replays</a></li>
+				<li><a class="button<?php if ($panels->tab === 'ladder') echo ' cur'; ?>" href="//pokemonshowdown.com/ladder/?0.44114170148790155">Ladder</a></li>
+				<li><a class="button nav-last" href="//pokemonshowdown.com/forums/?0.9624792136389946">Forum</a></li>
 			</ul>
 			<ul class="nav nav-play">
 				<li><a class="button greenbutton nav-first nav-last" href="http://play.pokemonshowdown.com/">Play</a></li>
@@ -74,10 +74,10 @@ function ThemeHeaderTemplate() {
 
 function ThemeScriptsTemplate() {
 ?>
-	<script src="//34.134.251.210/js/lib/jquery-1.11.0.min.js?0.48177655327247515"></script>
-	<script src="//34.134.251.210/js/lib/lodash.core.js?0.9876832269221458"></script>
-	<script src="//34.134.251.210/js/lib/backbone.js?0.5447741807355049"></script>
-	<script src="//dex.pokemonshowdown.com/js/panels.js?0.5756963364809944"></script>
+	<script src="//34.134.251.210/js/lib/jquery-1.11.0.min.js?0.1664214935471624"></script>
+	<script src="//34.134.251.210/js/lib/lodash.core.js?0.23436104087326215"></script>
+	<script src="//34.134.251.210/js/lib/backbone.js?0.7057150182303742"></script>
+	<script src="//dex.pokemonshowdown.com/js/panels.js?0.7155500913370747"></script>
 <?php
 }
 
@@ -86,21 +86,21 @@ function ThemeFooterTemplate() {
 ?>
 <?php $panels->scripts(); ?>
 
-	<script src="//34.134.251.210/js/lib/jquery-cookie.js?0.005675685310946088"></script>
-	<script src="//34.134.251.210/js/lib/html-sanitizer-minified.js?0.253050306267236"></script>
-	<script src="//34.134.251.210/js/battle-sound.js?0.4415422904946469"></script>
-	<script src="//34.134.251.210/config/config.js?0.8702288787031085"></script>
-	<script src="//34.134.251.210/js/battledata.js?0.5585900699664859"></script>
-	<script src="//34.134.251.210/data/pokedex-mini.js?0.6940041638790317"></script>
-	<script src="//34.134.251.210/data/pokedex-mini-bw.js?0.9777337038419598"></script>
-	<script src="//34.134.251.210/data/graphics.js?0.989429201315253"></script>
-	<script src="//34.134.251.210/data/pokedex.js?0.8393866801160568"></script>
-	<script src="//34.134.251.210/data/items.js?0.9758531835262156"></script>
-	<script src="//34.134.251.210/data/moves.js?0.9247562603837602"></script>
-	<script src="//34.134.251.210/data/abilities.js?0.8826676554087616"></script>
-	<script src="//34.134.251.210/data/teambuilder-tables.js?0.7103643084705844"></script>
-	<script src="//34.134.251.210/js/battle-tooltips.js?0.938907699864145"></script>
-	<script src="//34.134.251.210/js/battle.js?0.8622977255027418"></script>
+	<script src="//34.134.251.210/js/lib/jquery-cookie.js?0.42294066388080886"></script>
+	<script src="//34.134.251.210/js/lib/html-sanitizer-minified.js?0.7234849195770021"></script>
+	<script src="//34.134.251.210/js/battle-sound.js?0.03902862805663565"></script>
+	<script src="//34.134.251.210/config/config.js?0.4688628654925291"></script>
+	<script src="//34.134.251.210/js/battledata.js?0.9186862236049362"></script>
+	<script src="//34.134.251.210/data/pokedex-mini.js?0.6338482133210832"></script>
+	<script src="//34.134.251.210/data/pokedex-mini-bw.js?0.8173499816641152"></script>
+	<script src="//34.134.251.210/data/graphics.js?0.38751769824441573"></script>
+	<script src="//34.134.251.210/data/pokedex.js?0.9569254251851795"></script>
+	<script src="//34.134.251.210/data/items.js?0.7549081251721634"></script>
+	<script src="//34.134.251.210/data/moves.js?0.9189190708691899"></script>
+	<script src="//34.134.251.210/data/abilities.js?0.6677129867326177"></script>
+	<script src="//34.134.251.210/data/teambuilder-tables.js?0.35719682025974664"></script>
+	<script src="//34.134.251.210/js/battle-tooltips.js?0.11048196900547813"></script>
+	<script src="//34.134.251.210/js/battle.js?0.3743429300031398"></script>
 	<script src="/js/replay.js?51e024e3"></script>
 
 </body></html>
