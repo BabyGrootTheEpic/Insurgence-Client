@@ -945,11 +945,10 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 			} else {
 				tierSet = tierSet.slice(slices.Regular);
 			}
-		}
-		else if (isDoubles || format.startsWith('anythinggoes') || format.endsWith('goes') || format.endsWith('ag') || format.startsWith('ag')
+		} else if (isDoubles || format.startsWith('anythinggoes') || format.endsWith('goes') || format.endsWith('ag') || format.startsWith('ag')
 		|| format.includes('hackmons') || format.endsWith('bh') || format.includes('custom')) {
 			tierSet = tierSet.slice(slices.AG);
-		}
+		} else if (format.includes('pokebilities')) tierSet = tierSet.slice(slices.OU);
 		else tierSet = tierSet.slice(slices.Uber);
 		/*if (format === 'ubers' || format === 'uber') tierSet = tierSet.slice(slices.Uber);
 		else if (isVGCOrBS) {
