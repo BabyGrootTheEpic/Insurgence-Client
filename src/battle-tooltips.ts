@@ -580,7 +580,7 @@ class BattleTooltips {
 					case 'hail':
 						zMove = this.battle.dex.moves.get(BattleTooltips.zMoveTable['Ice']);
 						break;
-					case 'darkness':
+					case 'newmoon':
 						zMove = this.battle.dex.moves.get(BattleTooltips.zMoveTable['Dark']);
 						break;
 					}
@@ -1115,7 +1115,7 @@ class BattleTooltips {
 			if (ability === 'slushrush' && weather === 'hail') {
 				speedModifiers.push(2);
 			}
-			if (ability === 'shadowdance' && weather === 'darkness') {
+			if (ability === 'shadowdance' && weather === 'newmoon') {
 				speedModifiers.push(2);
 			}
 			if (item !== 'utilityumbrella') {
@@ -1135,7 +1135,7 @@ class BattleTooltips {
 						}
 					}
 				}
-				if (ability === 'supercell' && (weather === 'raindance' || weather === 'primordialsea' || weather === 'darkness')) {
+				if (ability === 'supercell' && (weather === 'raindance' || weather === 'primordialsea' || weather === 'newmoon')) {
 					stats.spa = Math.floor(stats.spa * 1.5);
 				}
 				if (ability === 'chlorophyll' && (weather === 'sunnyday' || weather === 'desolateland')) {
@@ -1144,10 +1144,10 @@ class BattleTooltips {
 				if (ability === 'swiftswim' && (weather === 'raindance' || weather === 'primordialsea')) {
 					speedModifiers.push(2);
 				}
-			} else if (ability === 'supercell' && weather === 'darkness') {
+			} else if (ability === 'supercell' && weather === 'newmoon') {
 				stats.spa = Math.floor(stats.spa * 1.5);
 			}
-			if (ability === 'absolution' && weather === 'darkness') {
+			if (ability === 'absolution' && weather === 'newmoon') {
 				stats.spa = Math.floor(stats.spa * 1.5);
 			}
 		}
@@ -1406,7 +1406,7 @@ class BattleTooltips {
 			case 'hail':
 				moveType = 'Ice';
 				break;
-			case 'darkness':
+			case 'newmoon':
 				moveType = 'Dark';
 				break;
 			}

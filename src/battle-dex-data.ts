@@ -808,7 +808,7 @@ const BattlePokemonIconIndexes: {[id: string]: number} = {
 	tyranitararmor: 1644 + 4,
 	flygonarmor: 1644 + 5,
 	castformsandy: 1644 + 6,
-	castformdarkness: 1644 + 7,
+	castformcloudy: 1644 + 7,
 	regigigasprimal: 1644 + 8,
 	giratinaprimal: 1644 + 9,
 	arceusprimal: 1644 + 10,

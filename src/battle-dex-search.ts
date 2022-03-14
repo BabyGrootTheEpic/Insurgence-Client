@@ -1336,9 +1336,9 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		case 'hiddenpowerice':
 			return !moves.includes('icebeam') && (dex.gen >= 4 || !moves.includes('icepunch')) && (dex.gen <= 5 || !moves.includes('aurorabeam'));
 		case 'hiddenpowerflying':
-			return dex.gen >= 4 || !moves.includes('drillpeck');
+			return dex.gen < 4 && !moves.includes('drillpeck');
 		case 'hiddenpowerbug':
-			return dex.gen >= 4 || !moves.includes('megahorn');
+			return (dex.gen >= 4 || !moves.includes('megahorn')) && !moves.includes('bugbuzz') && !moves.includes('signalbeam');
 		case 'hiddenpowerpsychic':
 			return species.baseSpecies === 'Unown';
 		case 'hyperspacefury':

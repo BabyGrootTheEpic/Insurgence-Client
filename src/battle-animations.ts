@@ -925,7 +925,7 @@ export class BattleScene implements BattleSceneStub {
 				sandstorm: 'Sandstorm',
 				hail: 'Hail',
 				deltastream: 'Strong Winds',
-        darkness: 'Darkness',
+       			newmoon: 'Darkness',
 			};
 			weatherhtml = `${weatherNameTable[this.battle.weather] || this.battle.weather}`;
 			if (this.battle.weatherMinTimeLeft !== 0) {
