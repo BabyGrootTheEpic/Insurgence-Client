@@ -1834,7 +1834,7 @@ mewspace:1644+3,
 tyranitararmor:1644+4,
 flygonarmor:1644+5,
 castformsandy:1644+6,
-castformdarkness:1644+7,
+castformcloudy:1644+7,
 regigigasprimal:1644+8,
 giratinaprimal:1644+9,
 arceusprimal:1644+10,
@@ -5465,7 +5465,7 @@ var blocker=BattleTextParser.effectId(kwArgs.from);
 var _line25=this.maybeAbility(kwArgs.from,kwArgs.of||_pokemon31);
 var _templateId10='block';
 if(['desolateland','primordialsea'].includes(blocker)&&
-!['sunnyday','raindance','sandstorm','hail','newmoon','darkness'].includes(_id18)){
+!['sunnyday','raindance','sandstorm','hail','newmoon'].includes(_id18)){
 _templateId10='blockMove';
 }else if(blocker==='uproar'&&kwArgs.msg){
 _templateId10='blockSelf';

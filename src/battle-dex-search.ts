@@ -577,7 +577,7 @@ abstract class BattleTypedSearch<T extends SearchType> {
 		const formatid = format;
 		if (format.slice(0, 3) === 'gen') {
 			const gen = (Number(format.charAt(3)) || 6);
-			format = (format.slice(4) || 'customgame') as ID;
+			format = (format.slice(4) || 'anythinggoes') as ID;
 			this.dex = Dex.forGen(gen);
 		} else if (!format) {
 			this.dex = Dex;
@@ -630,7 +630,7 @@ abstract class BattleTypedSearch<T extends SearchType> {
 		}*/
 
 		//Checks if the format isn't a singles format.
-		let formatName = "";
+		let formatName = '';
 		if(window.BattleFormats[formatid]) formatName = window.BattleFormats[formatid].name; //Full name of the format, not the id version.
 		if(
 			formatName.includes('] (D)') || format.startsWith('doubles') || format.endsWith('doubles') ||
@@ -885,7 +885,6 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 		const format = this.format;
 		if (!format) return this.getDefaultResults();
 		const isVGCOrBS = format.startsWith('battlespot') || format.startsWith('battlestadium') || format.startsWith('vgc') || format.includes('flatrules');
-		let isDoubles = this.formatType?.includes('doubles') || format.startsWith('vgc');
 		const dex = this.dex;
 
 		let table = BattleTeambuilderTable;
@@ -934,6 +933,12 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 			});
 			table.tiers = null;
 		}
+
+		const isDoubles = this.formatType?.includes('doubles') || format.startsWith('vgc');
+		const isAG = format.includes('anythinggoes') || format.endsWith('goes') || format.endsWith('ag')
+					|| format.includes('hackmons') || format.endsWith('bh') || format.includes('custom');
+		const isOU = format.includes('pokebilities') || format.endsWith('OU');
+
 		let tierSet: SearchRow[] = table.tierSet;
 		let slices: {[k: string]: number} = table.formatSlices;
 		if (isVGCOrBS) {
@@ -945,10 +950,10 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 			} else {
 				tierSet = tierSet.slice(slices.Regular);
 			}
-		} else if (isDoubles || format.startsWith('anythinggoes') || format.endsWith('goes') || format.endsWith('ag') || format.startsWith('ag')
-		|| format.includes('hackmons') || format.endsWith('bh') || format.includes('custom')) {
+		} else if (isOU && !isAG) tierSet = tierSet.slice(slices.OU);
+		else if (isAG || isDoubles) {
 			tierSet = tierSet.slice(slices.AG);
-		} else if (format.includes('pokebilities')) tierSet = tierSet.slice(slices.OU);
+		}
 		else tierSet = tierSet.slice(slices.Uber);
 		/*if (format === 'ubers' || format === 'uber') tierSet = tierSet.slice(slices.Uber);
 		else if (isVGCOrBS) {

@@ -577,7 +577,7 @@ this.baseIllegalResults=null;
 var formatid=format;
 if(format.slice(0,3)==='gen'){
 var gen=Number(format.charAt(3))||6;
-format=format.slice(4)||'customgame';
+format=format.slice(4)||'anythinggoes';
 this.dex=Dex.forGen(gen);
 }else if(!format){
 this.dex=Dex;
@@ -630,7 +630,7 @@ this.dex=Dex;
 
 
 
-var formatName="";
+var formatName='';
 if(window.BattleFormats[formatid])formatName=window.BattleFormats[formatid].name;
 if(
 formatName.includes('] (D)')||format.startsWith('doubles')||format.endsWith('doubles')||
@@ -885,7 +885,6 @@ getBaseResults=function getBaseResults(){var _this$formatType3;
 var format=this.format;
 if(!format)return this.getDefaultResults();
 var isVGCOrBS=format.startsWith('battlespot')||format.startsWith('battlestadium')||format.startsWith('vgc')||format.includes('flatrules');
-var isDoubles=((_this$formatType3=this.formatType)==null?void 0:_this$formatType3.includes('doubles'))||format.startsWith('vgc');
 var dex=this.dex;
 
 var table=BattleTeambuilderTable;
@@ -934,6 +933,12 @@ return[r[0],r[1]];
 });
 table.tiers=null;
 }
+
+var isDoubles=((_this$formatType3=this.formatType)==null?void 0:_this$formatType3.includes('doubles'))||format.startsWith('vgc');
+var isAG=format.includes('anythinggoes')||format.endsWith('goes')||format.endsWith('ag')||
+format.includes('hackmons')||format.endsWith('bh')||format.includes('custom');
+var isOU=format.includes('pokebilities')||format.endsWith('OU');
+
 var tierSet=table.tierSet;
 var slices=table.formatSlices;
 if(isVGCOrBS){
@@ -945,10 +950,10 @@ tierSet=tierSet.slice(slices["Restricted Legendary"]);
 }else{
 tierSet=tierSet.slice(slices.Regular);
 }
-}else if(isDoubles||format.startsWith('anythinggoes')||format.endsWith('goes')||format.endsWith('ag')||format.startsWith('ag')||
-format.includes('hackmons')||format.endsWith('bh')||format.includes('custom')){
+}else if(isOU&&!isAG)tierSet=tierSet.slice(slices.OU);else
+if(isAG||isDoubles){
 tierSet=tierSet.slice(slices.AG);
-}else if(format.includes('pokebilities'))tierSet=tierSet.slice(slices.OU);else
+}else
 tierSet=tierSet.slice(slices.Uber);
 
 
@@ -1336,9 +1341,9 @@ return!moves.includes('energyball')&&!moves.includes('grassknot')&&!moves.includ
 case'hiddenpowerice':
 return!moves.includes('icebeam')&&(dex.gen>=4||!moves.includes('icepunch'))&&(dex.gen<=5||!moves.includes('aurorabeam'));
 case'hiddenpowerflying':
-return dex.gen>=4||!moves.includes('drillpeck');
+return dex.gen<4&&!moves.includes('drillpeck');
 case'hiddenpowerbug':
-return dex.gen>=4||!moves.includes('megahorn');
+return(dex.gen>=4||!moves.includes('megahorn'))&&!moves.includes('bugbuzz')&&!moves.includes('signalbeam');
 case'hiddenpowerpsychic':
 return species.baseSpecies==='Unown';
 case'hyperspacefury':
