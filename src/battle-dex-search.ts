@@ -1326,25 +1326,27 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		case 'headbutt':
 			return abilityid === 'serenegrace';
 		case 'hiddenpowerelectric':
-			return (dex.gen < 4 && !moves.includes('thunderpunch')) && !moves.includes('thunderbolt');
+			return (dex.gen >= 4 || !moves.includes('thunderpunch')) && !moves.includes('thunderbolt');
 		case 'hiddenpowerfighting':
-			return (dex.gen < 4 && !moves.includes('brickbreak')) && !moves.includes('aurasphere') && !moves.includes('focusblast');
+			return (dex.gen >= 4 || !moves.includes('brickbreak')) && !moves.includes('aurasphere') && !moves.includes('focusblast');
 		case 'hiddenpowerfire':
-			return (dex.gen < 4 && !moves.includes('firepunch')) && !moves.includes('flamethrower');
+			return (dex.gen >= 4 || !moves.includes('firepunch')) && !moves.includes('flamethrower');
 		case 'hiddenpowergrass':
 			return !moves.includes('energyball') && !moves.includes('grassknot') && !moves.includes('gigadrain');
 		case 'hiddenpowerice':
-			return !moves.includes('icebeam') && (dex.gen < 4 && !moves.includes('icepunch')) || (dex.gen > 5 && !moves.includes('aurorabeam'));
+			return !moves.includes('icebeam') && (dex.gen >= 4 || !moves.includes('icepunch')) && (dex.gen <= 5 || !moves.includes('aurorabeam'));
 		case 'hiddenpowerflying':
-			return dex.gen < 4 && !moves.includes('drillpeck');
+			return dex.gen >= 4 || !moves.includes('drillpeck');
 		case 'hiddenpowerbug':
-			return dex.gen < 4 && !moves.includes('megahorn');
+			return dex.gen >= 4 || !moves.includes('megahorn');
 		case 'hiddenpowerpsychic':
 			return species.baseSpecies === 'Unown';
 		case 'hyperspacefury':
 			return species.id === 'hoopaunbound';
+		case 'spiritaway':
+			return species.id === 'hoopaunbound';
 		case 'hypnosis':
-			return (dex.gen < 4 && !moves.includes('sleeppowder')) || (dex.gen > 6 && abilityid === 'baddreams');
+			return (dex.gen >= 4 || !moves.includes('sleeppowder')) || (dex.gen > 6 && abilityid === 'baddreams');
 		case 'icywind':
 			// Keldeo needs Hidden Power for Electric/Ghost
 			return species.baseSpecies === 'Keldeo' || this.formatType === 'doubles';
@@ -1419,7 +1421,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		if (moveData.basePower < 75) {
 			return BattleMoveSearch.GOOD_WEAK_MOVES.includes(id);
 		}
-		if (id === 'skydrop' || id === 'spiritaway') return true;
+		if (id === 'skydrop') return true;
 		// strong moves
 		if (moveData.flags?.charge) {
 			return itemid === 'powerherb';
@@ -1431,7 +1433,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 	}
 	static readonly GOOD_STATUS_MOVES = [
 		'acidarmor', 'agility', 'aromatherapy', 'auroraveil', 'autotomize', 'banefulbunker', 'batonpass', 'bellydrum', 'bulkup', 'calmmind', 'clangoroussoul', 'coil', 'cottonguard', 'courtchange', 'curse', 'defog', 'destinybond', 'detect', 'disable', 'dragondance', 'drainingkiss', 'encore', 'extremeevoboost', 'geomancy', 'glare', 'haze', 'healbell', 'healingwish', 'healorder', 'heartswap', 'honeclaws', 'kingsshield', 'leechseed', 'lightscreen', 'lovelykiss', 'lunardance', 'magiccoat', 'maxguard', 'memento', 'milkdrink', 'moonlight', 'morningsun', 'nastyplot', 'naturesmadness', 'noretreat', 'obstruct', 'painsplit', 'partingshot', 'perishsong', 'protect', 'quiverdance', 'recover', 'reflect', 'reflecttype', 'rest', 'roar', 'rockpolish', 'roost', 'shellsmash', 'shiftgear', 'shoreup', 'slackoff', 'sleeppowder', 'sleeptalk', 'softboiled', 'spikes', 'spikyshield', 'spore', 'stealthrock', 'stickyweb', 'strengthsap', 'substitute', 'switcheroo', 'swordsdance', 'synthesis', 'tailglow', 'tailwind', 'taunt', 'thunderwave', 'toxic', 'toxicspikes', 'transform', 'trick', 'whirlwind', 'willowisp', 'wish', 'yawn', //Real
-		'livewire', 'nanorepair', 'permafrost', 'retrograde', 'brushfire', //Insurgence
+		'livewire', 'nanorepair', 'permafrost', 'retrograde', //Insurgence
 		'lunarblessing', 'takeheart', 'victorydance', //Legends Arceus
 		'frigid wind', //Custom
 	] as ID[] as readonly ID[];

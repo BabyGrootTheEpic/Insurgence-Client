@@ -1326,25 +1326,27 @@ return species.baseStats.spe<=60;
 case'headbutt':
 return abilityid==='serenegrace';
 case'hiddenpowerelectric':
-return dex.gen<4&&!moves.includes('thunderpunch')&&!moves.includes('thunderbolt');
+return(dex.gen>=4||!moves.includes('thunderpunch'))&&!moves.includes('thunderbolt');
 case'hiddenpowerfighting':
-return dex.gen<4&&!moves.includes('brickbreak')&&!moves.includes('aurasphere')&&!moves.includes('focusblast');
+return(dex.gen>=4||!moves.includes('brickbreak'))&&!moves.includes('aurasphere')&&!moves.includes('focusblast');
 case'hiddenpowerfire':
-return dex.gen<4&&!moves.includes('firepunch')&&!moves.includes('flamethrower');
+return(dex.gen>=4||!moves.includes('firepunch'))&&!moves.includes('flamethrower');
 case'hiddenpowergrass':
 return!moves.includes('energyball')&&!moves.includes('grassknot')&&!moves.includes('gigadrain');
 case'hiddenpowerice':
-return!moves.includes('icebeam')&&dex.gen<4&&!moves.includes('icepunch')||dex.gen>5&&!moves.includes('aurorabeam');
+return!moves.includes('icebeam')&&(dex.gen>=4||!moves.includes('icepunch'))&&(dex.gen<=5||!moves.includes('aurorabeam'));
 case'hiddenpowerflying':
-return dex.gen<4&&!moves.includes('drillpeck');
+return dex.gen>=4||!moves.includes('drillpeck');
 case'hiddenpowerbug':
-return dex.gen<4&&!moves.includes('megahorn');
+return dex.gen>=4||!moves.includes('megahorn');
 case'hiddenpowerpsychic':
 return species.baseSpecies==='Unown';
 case'hyperspacefury':
 return species.id==='hoopaunbound';
+case'spiritaway':
+return species.id==='hoopaunbound';
 case'hypnosis':
-return dex.gen<4&&!moves.includes('sleeppowder')||dex.gen>6&&abilityid==='baddreams';
+return dex.gen>=4||!moves.includes('sleeppowder')||dex.gen>6&&abilityid==='baddreams';
 case'icywind':
 
 return species.baseSpecies==='Keldeo'||this.formatType==='doubles';
@@ -1419,7 +1421,7 @@ return BattleMoveSearch.GOOD_STATUS_MOVES.includes(id);
 if(moveData.basePower<75){
 return BattleMoveSearch.GOOD_WEAK_MOVES.includes(id);
 }
-if(id==='skydrop'||id==='spiritaway')return true;
+if(id==='skydrop')return true;
 
 if((_moveData$flags=moveData.flags)!=null&&_moveData$flags.charge){
 return itemid==='powerherb';
@@ -1685,7 +1687,7 @@ return(name1<name2?-1:name1>name2?1:0)*sortOrder;
 });}
 
 throw new Error("invalid sortcol");
-};return BattleMoveSearch;}(BattleTypedSearch);BattleMoveSearch.GOOD_STATUS_MOVES=['acidarmor','agility','aromatherapy','auroraveil','autotomize','banefulbunker','batonpass','bellydrum','bulkup','calmmind','clangoroussoul','coil','cottonguard','courtchange','curse','defog','destinybond','detect','disable','dragondance','drainingkiss','encore','extremeevoboost','geomancy','glare','haze','healbell','healingwish','healorder','heartswap','honeclaws','kingsshield','leechseed','lightscreen','lovelykiss','lunardance','magiccoat','maxguard','memento','milkdrink','moonlight','morningsun','nastyplot','naturesmadness','noretreat','obstruct','painsplit','partingshot','perishsong','protect','quiverdance','recover','reflect','reflecttype','rest','roar','rockpolish','roost','shellsmash','shiftgear','shoreup','slackoff','sleeppowder','sleeptalk','softboiled','spikes','spikyshield','spore','stealthrock','stickyweb','strengthsap','substitute','switcheroo','swordsdance','synthesis','tailglow','tailwind','taunt','thunderwave','toxic','toxicspikes','transform','trick','whirlwind','willowisp','wish','yawn','livewire','nanorepair','permafrost','retrograde','brushfire','lunarblessing','takeheart','victorydance','frigid wind'];BattleMoveSearch.GOOD_WEAK_MOVES=['accelerock','acrobatics','aquajet','avalanche','bonemerang','bouncybubble','bulletpunch','buzzybuzz','circlethrow','clearsmog','doubleironbash','dragondarts','dragontail','endeavor','facade','firefang','flipturn','freezedry','frustration','geargrind','grassknot','gyroball','hex','icefang','iceshard','iciclespear','knockoff','lowkick','machpunch','nightshade','nuzzle','pikapapow','psychocut','pursuit','quickattack','rapidspin','return','rockblast','scorchingsands','seismictoss','shadowclaw','shadowsneak','sizzlyslide','storedpower','stormthrow','suckerpunch','superfang','surgingstrikes','tailslap','tripleaxel','uturn','veeveevolley','voltswitch','watershuriken','weatherball','achillesheel','corrode','crystalrush','dracojet','wormhole','barbbarrage','bittermalice','infernalparade','mysticalpower','psyshieldbash'];BattleMoveSearch.BAD_STRONG_MOVES=['beakblast','belch','burnup','crushclaw','doomdesire','dragonrush','dreameater','eggbomb','firepledge','flyingpress','futuresight','grasspledge','hyperbeam','hyperfang','hyperspacehole','jawlock','landswrath','lastresort','megakick','megapunch','mistyexplosion','muddywater','nightdaze','pollenpuff','rockclimb','selfdestruct','shelltrap','skyuppercut','slam','strength','submission','synchronoise','takedown','thrash','uproar','waterpledge','darkmatter','chloroblast','mountaingale'];BattleMoveSearch.GOOD_DOUBLES_MOVES=['allyswitch','bulldoze','coaching','electroweb','faketears','fling','followme','healpulse','helpinghand','junglehealing','lifedew','muddywater','pollenpuff','psychup','ragepowder','safeguard','skillswap','snipeshot','wideguard'];var
+};return BattleMoveSearch;}(BattleTypedSearch);BattleMoveSearch.GOOD_STATUS_MOVES=['acidarmor','agility','aromatherapy','auroraveil','autotomize','banefulbunker','batonpass','bellydrum','bulkup','calmmind','clangoroussoul','coil','cottonguard','courtchange','curse','defog','destinybond','detect','disable','dragondance','drainingkiss','encore','extremeevoboost','geomancy','glare','haze','healbell','healingwish','healorder','heartswap','honeclaws','kingsshield','leechseed','lightscreen','lovelykiss','lunardance','magiccoat','maxguard','memento','milkdrink','moonlight','morningsun','nastyplot','naturesmadness','noretreat','obstruct','painsplit','partingshot','perishsong','protect','quiverdance','recover','reflect','reflecttype','rest','roar','rockpolish','roost','shellsmash','shiftgear','shoreup','slackoff','sleeppowder','sleeptalk','softboiled','spikes','spikyshield','spore','stealthrock','stickyweb','strengthsap','substitute','switcheroo','swordsdance','synthesis','tailglow','tailwind','taunt','thunderwave','toxic','toxicspikes','transform','trick','whirlwind','willowisp','wish','yawn','livewire','nanorepair','permafrost','retrograde','lunarblessing','takeheart','victorydance','frigid wind'];BattleMoveSearch.GOOD_WEAK_MOVES=['accelerock','acrobatics','aquajet','avalanche','bonemerang','bouncybubble','bulletpunch','buzzybuzz','circlethrow','clearsmog','doubleironbash','dragondarts','dragontail','endeavor','facade','firefang','flipturn','freezedry','frustration','geargrind','grassknot','gyroball','hex','icefang','iceshard','iciclespear','knockoff','lowkick','machpunch','nightshade','nuzzle','pikapapow','psychocut','pursuit','quickattack','rapidspin','return','rockblast','scorchingsands','seismictoss','shadowclaw','shadowsneak','sizzlyslide','storedpower','stormthrow','suckerpunch','superfang','surgingstrikes','tailslap','tripleaxel','uturn','veeveevolley','voltswitch','watershuriken','weatherball','achillesheel','corrode','crystalrush','dracojet','wormhole','barbbarrage','bittermalice','infernalparade','mysticalpower','psyshieldbash'];BattleMoveSearch.BAD_STRONG_MOVES=['beakblast','belch','burnup','crushclaw','doomdesire','dragonrush','dreameater','eggbomb','firepledge','flyingpress','futuresight','grasspledge','hyperbeam','hyperfang','hyperspacehole','jawlock','landswrath','lastresort','megakick','megapunch','mistyexplosion','muddywater','nightdaze','pollenpuff','rockclimb','selfdestruct','shelltrap','skyuppercut','slam','strength','submission','synchronoise','takedown','thrash','uproar','waterpledge','darkmatter','chloroblast','mountaingale'];BattleMoveSearch.GOOD_DOUBLES_MOVES=['allyswitch','bulldoze','coaching','electroweb','faketears','fling','followme','healpulse','helpinghand','junglehealing','lifedew','muddywater','pollenpuff','psychup','ragepowder','safeguard','skillswap','snipeshot','wideguard'];var
 
 
 BattleCategorySearch=function(_BattleTypedSearch5){_inheritsLoose(BattleCategorySearch,_BattleTypedSearch5);function BattleCategorySearch(){return _BattleTypedSearch5.apply(this,arguments)||this;}var _proto7=BattleCategorySearch.prototype;_proto7.
