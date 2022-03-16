@@ -3210,9 +3210,12 @@
 				if (baseFormat.substr(0, 4) === 'bdsp') baseFormat = baseFormat.substr(4);
 				if (baseFormat.substr(0, 8) === 'pokebank') baseFormat = baseFormat.substr(8);
 				if (this.curTeam && this.curTeam.format) {
-					if (baseFormat.substr(0, 10) === 'battlespot' && baseFormat.substr(0, 19) !== 'battlespotspecial13' ||
+					set.level = 120;
+					if (baseFormat.includes('flatrules') || 
+						baseFormat.substr(0, 10) === 'battlespot' && baseFormat.substr(0, 19) !== 'battlespotspecial13' ||
 						baseFormat.substr(0, 3) === 'vgc' || baseFormat.substr(0, 14) === 'battlefestival') set.level = 50;
-					if (baseFormat.substr(0, 2) === 'lc' || baseFormat.substr(0, 5) === 'caplc' || baseFormat.substr(-2) === 'lc') set.level = 5;
+					if (baseFormat.includes('littlecup') ||
+						baseFormat.substr(0, 2) === 'lc' || baseFormat.substr(0, 5) === 'caplc' || baseFormat.substr(-2) === 'lc') set.level = 5;
 					if (baseFormat.substr(0, 19) === 'battlespotspecial17') set.level = 1;
 					if (format && format.teambuilderLevel) {
 						set.level = format.teambuilderLevel;

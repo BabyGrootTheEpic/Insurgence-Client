@@ -793,8 +793,10 @@ abstract class BattleTypedSearch<T extends SearchType> {
 		}
 		return false;
 	}
-	getTier(pokemon: Species) {
+	getTier(pokemon: Species, giveTier: boolean = false) {
+		if (giveTier) return pokemon.tier;
 		return String(pokemon.num);
+
 		/*if (this.formatType === 'metronome' || this.formatType === 'natdex') {
 			return pokemon.num >= 0 ? String(pokemon.num) : pokemon.tier;
 		}
@@ -934,10 +936,8 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 			table.tiers = null;
 		}
 
-		const isDoubles = this.formatType?.includes('doubles') || format.startsWith('vgc');
 		const isAG = format.includes('anythinggoes') || format.endsWith('goes') || format.endsWith('ag')
 					|| format.includes('hackmons') || format.endsWith('bh') || format.includes('custom');
-		const isOU = format.includes('pokebilities') || format.endsWith('OU');
 
 		let tierSet: SearchRow[] = table.tierSet;
 		let slices: {[k: string]: number} = table.formatSlices;
@@ -950,10 +950,9 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 			} else {
 				tierSet = tierSet.slice(slices.Regular);
 			}
-		} else if (isOU && !isAG) tierSet = tierSet.slice(slices.OU);
-		else if (isAG || isDoubles) {
-			tierSet = tierSet.slice(slices.AG);
-		}
+		} else if (format.endsWith('lc') || format.includes('littlecup')) tierSet = tierSet.slice(slices.LC);
+		else if (format.endsWith('ou') || (!isAG && format.includes('pokebilities'))) tierSet = tierSet.slice(slices.OU);
+		else if (isAG || this.formatType?.includes('doubles')) tierSet = tierSet.slice(slices.AG);
 		else tierSet = tierSet.slice(slices.Uber);
 		/*if (format === 'ubers' || format === 'uber') tierSet = tierSet.slice(slices.Uber);
 		else if (isVGCOrBS) {
@@ -998,7 +997,7 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 				...tierSet.slice(slices.DUber, slices.DOU),
 				...tierSet.slice(slices.DUU),
 			];
-		}*/
+		}
 
 		if (dex.gen >= 5) {
 			if (format === 'zu' && table.zuBans) {
@@ -1013,7 +1012,7 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 					return true;
 				});
 			}
-		}
+		}*/
 
 		// Filter out Gmax Pokemon from standard tier selection
 		if (!/^(battlestadium|vgc|doublesubers)/g.test(format)) {
@@ -1039,8 +1038,8 @@ class BattlePokemonSearch extends BattleTypedSearch<'pokemon'> {
 				if (species.eggGroups[0] !== value && species.eggGroups[1] !== value) return false;
 				break;
 			case 'tier':
-				/*if (this.getTier(species) !== value)*/ return false;
-				//break;
+				if (this.getTier(species, true) !== value) return false;
+				break;
 			case 'ability':
 				if (!Dex.hasAbility(species, value)) return false;
 				break;
