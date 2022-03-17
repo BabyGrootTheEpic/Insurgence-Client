@@ -1851,46 +1851,15 @@ ivysaurdeltaf:1644+19,
 venusaurdeltaf:1644+20,
 deinodeltaf:1644+21,
 zweilousdeltaf:1644+22,
-hydreigondeltaf:1644+23};
+hydreigondeltaf:1644+23,
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+dugtriomega:1668+0,
+sceptilemegazo:1668+1,
+swampertmegazo:1668+2,
+jirachidelta:1668+3,
+victinidelta:1668+4,
+golurkmega:1668+5,
+ausitto:1668+6};
 
 
 
