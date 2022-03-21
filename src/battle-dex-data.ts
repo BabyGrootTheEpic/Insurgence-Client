@@ -868,7 +868,7 @@ const BattlePokemonIconIndexes: {[id: string]: number} = {
 	//electrikeshadow: 1668 + 37,
 	//wailmershadow: 1668 + 38,
 	//flygonshadow: 1668 + 39,
-	////cacneashaodw: 1668 + 40,
+	////cacneashadow: 1668 + 40,
 	//swablushadow: 1668 + 41,
 	//absolshadow: 1668 + 42,
 	//metagrossshadow: 1668 + 43,

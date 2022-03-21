@@ -2003,6 +2003,7 @@ export class PokemonSprite extends Sprite {
 		beakblast: ['Beak Blast', 'neutral'],
 		laserfocus: ['Laser Focus', 'good'],
 		spotlight: ['Spotlight', 'neutral'],
+		angelwings: ['Weak to all Types', 'bad'],
 		itemremoved: null,
 		// partial trapping
 		bind: ['Bind', 'bad'],
