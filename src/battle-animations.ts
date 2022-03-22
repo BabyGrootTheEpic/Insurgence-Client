@@ -1941,6 +1941,7 @@ export class PokemonSprite extends Sprite {
 		telekinesis: ['Telekinesis', 'neutral'],
 		transform: ['Transformed', 'neutral'],
 		powertrick: ['Power Trick', 'neutral'],
+		powershift: ['Power Shift', 'neutral'],
 		curse: ['Curse', 'bad'],
 		nightmare: ['Nightmare', 'bad'],
 		attract: ['Infatuation', 'bad'],
