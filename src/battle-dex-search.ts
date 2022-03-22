@@ -1285,10 +1285,14 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 			if (id === 'metronome') return true;
 		}
 
-		if (itemid === 'pidgeotite') abilityid = 'noguard' as ID;
-		if (itemid === 'blastoisinite') abilityid = 'megalauncher' as ID;
-		if (itemid === 'aerodactylite') abilityid = 'toughclaws' as ID;
+		if (itemid === 'pidgeotite' || itemid === 'poliwrathite') abilityid = 'noguard' as ID;
+		if (itemid === 'blastoisinite' || itemid === 'deltablastoisinite') abilityid = 'megalauncher' as ID;
+		if (itemid === 'aerodactylite' || itemid === 'feraligatite' || itemid === 'spiritombite') abilityid = 'toughclaws' as ID;
 		if (itemid === 'glalitite') abilityid = 'refrigerate' as ID;
+		if (itemid === 'shiftrite') abilityid = 'shadowdance' as ID;
+		if (itemid === 'deltacharizardite') abilityid = 'noctem' as ID;
+		if (itemid === 'deltabisharpite') abilityid = 'technician' as ID;
+		if (itemid === 'golurkite') abilityid = 'sheerforce' as ID;
 
 		switch (id) {
 		case 'fakeout': case 'flamecharge': case 'nuzzle': case 'poweruppunch':
@@ -1311,7 +1315,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		case 'bellydrum':
 			return moves.includes('aquajet') || moves.includes('extremespeed') ||
 				['iceface', 'unburden'].includes(abilityid);
-		case 'bulletseed':
+		case 'bullethail': case 'bulletseed':
 			return ['skilllink', 'technician'].includes(abilityid);
 		case 'counter':
 			return species.baseStats.hp >= 65;
@@ -1327,7 +1331,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 			return abilityid === 'grassysurge';
 		case 'gyroball':
 			return species.baseStats.spe <= 60;
-		case 'headbutt':
+		case 'fairyforce': case 'headbutt':
 			return abilityid === 'serenegrace';
 		case 'hiddenpowerelectric':
 			return (dex.gen >= 4 || !moves.includes('thunderpunch')) && !moves.includes('thunderbolt');
@@ -1393,7 +1397,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 			return species.types.includes('Ground');
 		case 'smartstrike':
 			return species.types.includes('Steel') && !moves.includes('ironhead');
-		case 'soak':
+		case 'flashfreeze': case 'soak':
 			return abilityid === 'unaware';
 		case 'steelwing':
 			return !moves.includes('ironhead');
@@ -1439,6 +1443,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		'acidarmor', 'agility', 'aromatherapy', 'auroraveil', 'autotomize', 'banefulbunker', 'batonpass', 'bellydrum', 'bulkup', 'calmmind', 'clangoroussoul', 'coil', 'cottonguard', 'courtchange', 'curse', 'defog', 'destinybond', 'detect', 'disable', 'dragondance', 'drainingkiss', 'encore', 'extremeevoboost', 'geomancy', 'glare', 'haze', 'healbell', 'healingwish', 'healorder', 'heartswap', 'honeclaws', 'kingsshield', 'leechseed', 'lightscreen', 'lovelykiss', 'lunardance', 'magiccoat', 'maxguard', 'memento', 'milkdrink', 'moonlight', 'morningsun', 'nastyplot', 'naturesmadness', 'noretreat', 'obstruct', 'painsplit', 'partingshot', 'perishsong', 'protect', 'quiverdance', 'recover', 'reflect', 'reflecttype', 'rest', 'roar', 'rockpolish', 'roost', 'shellsmash', 'shiftgear', 'shoreup', 'slackoff', 'sleeppowder', 'sleeptalk', 'softboiled', 'spikes', 'spikyshield', 'spore', 'stealthrock', 'stickyweb', 'strengthsap', 'substitute', 'switcheroo', 'swordsdance', 'synthesis', 'tailglow', 'tailwind', 'taunt', 'thunderwave', 'toxic', 'toxicspikes', 'transform', 'trick', 'whirlwind', 'willowisp', 'wish', 'yawn', //Real
 		'livewire', 'nanorepair', 'permafrost', 'retrograde', //Insurgence
 		'lunarblessing', 'takeheart', 'victorydance', //Legends Arceus
+		'adapt', 'angelwings', 'ragestate', //Zeta & Omicron
 		'frigid wind', //Custom
 	] as ID[] as readonly ID[];
 	static readonly GOOD_WEAK_MOVES = [
@@ -1660,7 +1665,9 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 				wringout: 120, crushgrip: 120, heatcrash: 120, heavyslam: 120, fling: 130, magnitude: 150,
 				beatup: 24, punishment: 1020, psywave: 1250, nightshade: 1200, seismictoss: 1200,
 				dragonrage: 1140, sonicboom: 1120, superfang: 1350, endeavor: 1399, sheercold: 1501,
-				fissure: 1500, horndrill: 1500, guillotine: 1500,
+				fissure: 1500, horndrill: 1500, guillotine: 1500, //Real
+				abyssalcrush: 1500, darkepitaph: 1500, dragonflux: 1500, forestsurge: 1500, infernalrage: 1500,
+				nervalcut: 1500, omnifist: 1500, razorstorm: 1500, titanicforce: 1500, soulwrecker: 1501, voidcaller: 1501, //Zeta & Omicron
 			};
 			return results.sort(([rowType1, id1], [rowType2, id2]) => {
 				let move1 = this.dex.moves.get(id1);
