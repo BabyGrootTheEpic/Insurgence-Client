@@ -1937,6 +1937,7 @@ class BattleTooltips {
 	static itemTypes: {[itemName: string]: TypeName} = {
 		'Black Belt': 'Fighting',
 		'Black Glasses': 'Dark',
+		'Blank Plate': 'Normal',
 		'Charcoal': 'Fire',
 		'Dragon Fang': 'Dragon',
 		'Hard Stone': 'Rock',
