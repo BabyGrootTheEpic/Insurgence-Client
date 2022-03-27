@@ -182,12 +182,12 @@ pokeballs=null;this.
 resourcePrefix=function(){var _window$document,_window$document$loca;
 var prefix='';
 if(((_window$document=window.document)==null?void 0:(_window$document$loca=_window$document.location)==null?void 0:_window$document$loca.protocol)!=='http:')prefix='https:';
-return prefix+"//raw.githubusercontent.com/BabyGrootTheEpic/Sprites/main/play.pokemonshowdown.com/";
+return prefix+"//raw.githubusercontent.com/Poilerwags/Sprites/master/play.pokemonshowdown.com/";
 }();this.
 
 fxPrefix=function(){var _window$document2,_window$document2$loc;
 var protocol=((_window$document2=window.document)==null?void 0:(_window$document2$loc=_window$document2.location)==null?void 0:_window$document2$loc.protocol)!=='http:'?'https:':'';
-return protocol+"//raw.githubusercontent.com/BabyGrootTheEpic/Sprites/main/play.pokemonshowdown.com/fx/";
+return protocol+"//raw.githubusercontent.com/Poilerwags/Sprites/master/play.pokemonshowdown.com/fx/";
 }();this.
 
 loadedSpriteData={xy:1,bw:0};this.
@@ -492,8 +492,15 @@ options.gender=pokemon.volatiles.transform[3];
 options.shiny=pokemon.shiny;
 options.gender=pokemon.gender;
 }
-if(pokemon.volatiles.dynamax&&options.dynamax!==false)isDynamax=true;
-pokemon=pokemon.getSpeciesForme();
+var isGigantamax=false;
+if(pokemon.volatiles.dynamax){
+if(pokemon.volatiles.dynamax[1]){
+isGigantamax=true;
+}else if(options.dynamax!==false){
+isDynamax=true;
+}
+}
+pokemon=pokemon.getSpeciesForme()+(isGigantamax?'-Gmax':'');
 }
 var species=Dex.species.get(pokemon);
 

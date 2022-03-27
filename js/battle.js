@@ -2397,9 +2397,11 @@ var _poke29=this.getPokemon(args[1]);
 var _species=Dex.species.get(args[2]);
 var _fromeffect2=Dex.getEffect(kwArgs.from);
 var isCustomAnim=_species.name.startsWith('Wishiwashi');
+if(!_poke29.getSpeciesForme().endsWith('-Gmax')&&!_species.name.endsWith('-Gmax')){
 _poke29.removeVolatile('typeadd');
 _poke29.removeVolatile('typechange');
-if(this.gen>=7)_poke29.removeVolatile('autotomize');
+if(this.gen>=6)_poke29.removeVolatile('autotomize');
+}
 
 if(!kwArgs.silent){
 this.activateAbility(_poke29,_fromeffect2);
@@ -2451,7 +2453,7 @@ if(kwArgs.silent)break;
 this.scene.typeAnim(_poke31,type);
 break;
 case'dynamax':
-_poke31.addVolatile('dynamax');
+_poke31.addVolatile('dynamax',!!args[3]);
 this.scene.animTransform(_poke31,true);
 break;
 case'powertrick':
