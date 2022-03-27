@@ -39,6 +39,7 @@ text=text.id;
 text=text.userid;
 }
 if(typeof text!=='string'&&typeof text!=='number')return'';
+if(text==='???')return text;
 return(''+text).toLowerCase().replace(/[^a-z0-9]+/g,'');
 }
 
