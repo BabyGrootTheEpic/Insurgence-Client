@@ -492,8 +492,15 @@ options.gender=pokemon.volatiles.transform[3];
 options.shiny=pokemon.shiny;
 options.gender=pokemon.gender;
 }
-if(pokemon.volatiles.dynamax&&options.dynamax!==false)isDynamax=true;
-pokemon=pokemon.getSpeciesForme();
+var isGigantamax=false;
+if(pokemon.volatiles.dynamax){
+if(pokemon.volatiles.dynamax[1]){
+isGigantamax=true;
+}else if(options.dynamax!==false){
+isDynamax=true;
+}
+}
+pokemon=pokemon.getSpeciesForme()+(isGigantamax?'-Gmax':'');
 }
 var species=Dex.species.get(pokemon);
 
