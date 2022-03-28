@@ -1376,9 +1376,12 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 			return !moves.includes('crunch') && !(moves.includes('knockoff') && dex.gen >= 6);
 		case 'petaldance':
 			return abilityid === 'owntempo';
+		case 'shadowforce':
+			return (!moves.includes('poltergeist') && !moves.includes('shadowclaw') && !moves.includes('zombiestrike')) || this.formatType === 'doubles'
+			|| ['noctem', 'shadowdance'].includes(abilityid) || itemid === 'powerherb';
 		case 'phantomforce':
-			return (!moves.includes('poltergeist') && !moves.includes('shadowclaw')) || this.formatType === 'doubles'
-			|| ['noctem', 'shadowdance'].includes(abilityid) || itemid === 'powerherb';;
+			return !moves.includes('shadowforce') && ((!moves.includes('poltergeist') && !moves.includes('shadowclaw') && !moves.includes('zombiestrike'))
+			|| this.formatType === 'doubles' || ['noctem', 'shadowdance'].includes(abilityid) || itemid === 'powerherb');
 		case 'poisonfang':
 			return species.types.includes('Poison') && !moves.includes('gunkshot') && !moves.includes('poisonjab');
 		case 'relicsong':
