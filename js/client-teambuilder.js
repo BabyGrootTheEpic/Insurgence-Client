@@ -3170,26 +3170,31 @@
 				}
 			}
 
+			var modifyIVs = !this.curTeam.name.startsWith('~') && !this.curTeam.folder.startsWith('~');
 			if (!set.ivs) {
 				if (minSpe === undefined && (!minAtk || gen < 3)) return;
 				set.ivs = {};
 			}
 			if (!set.ivs['spe'] && set.ivs['spe'] !== 0) set.ivs['spe'] = 31;
-			if (minSpe) {
-				// min Spe
-				set.ivs['spe'] = (hasHiddenPower ? set.ivs['spe'] % hpModulo : 0);
-			} else if (minSpe === false) {
-				// max Spe
-				set.ivs['spe'] = (hasHiddenPower ? 30 + (set.ivs['spe'] % 2) : 31);
+			if (modifyIVs) {
+				if (minSpe) {
+					// min Spe
+					set.ivs['spe'] = (hasHiddenPower ? set.ivs['spe'] % hpModulo : 0);
+				} else if (minSpe === false) {
+					// max Spe
+					set.ivs['spe'] = (hasHiddenPower ? 30 + (set.ivs['spe'] % 2) : 31);
+				}
 			}
 			if (gen < 3) return;
 			if (!set.ivs['atk'] && set.ivs['atk'] !== 0) set.ivs['atk'] = 31;
-			if (minAtk) {
-				// min Atk
-				set.ivs['atk'] = (hasHiddenPower ? set.ivs['atk'] % hpModulo : 0);
-			} else {
-				// max Atk
-				set.ivs['atk'] = (hasHiddenPower ? 30 + (set.ivs['atk'] % 2) : 31);
+			if (modifyIVs) {
+				if (minAtk) {
+					// min Atk
+					set.ivs['atk'] = (hasHiddenPower ? set.ivs['atk'] % hpModulo : 0);
+				} else {
+					// max Atk
+					set.ivs['atk'] = (hasHiddenPower ? 30 + (set.ivs['atk'] % 2) : 31);
+				}
 			}
 		},
 		setPokemon: function (val, selectNext) {
