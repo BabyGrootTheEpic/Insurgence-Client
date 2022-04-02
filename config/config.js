@@ -158,7 +158,7 @@ Config.defaultserver = {
 };
 
 /*** Begin automatically generated configuration ***/
-Config.version = "0.11.2 (144a3325)";
+Config.version = "0.11.2 (06e86fac)";
 
 Config.routes = {
 	root: 'pokemonshowdown.com',
