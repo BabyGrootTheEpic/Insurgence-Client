@@ -1324,12 +1324,18 @@ return 0;
 
 
 
-getSpeedRange=function getSpeedRange(pokemon){
-if(pokemon.volatiles.transform){
-pokemon=pokemon.volatiles.transform[1];
+getSpeedRange=function getSpeedRange(pokemon){var _pokemon$volatiles$tr;
+var tr=Math.trunc||Math.floor;
+var species=pokemon.getSpecies();
+var baseSpe=species.baseStats.spe;
+if(this.battle.rules['Scalemons Mod']){
+var bstWithoutHp=species.bst-species.baseStats.hp;
+var scale=600-species.baseStats.hp;
+baseSpe=tr(baseSpe*scale/bstWithoutHp);
+if(baseSpe<1)baseSpe=1;
+if(baseSpe>255)baseSpe=255;
 }
-var level=pokemon.level;
-var baseSpe=pokemon.getSpecies().baseStats['spe'];
+var level=((_pokemon$volatiles$tr=pokemon.volatiles.transform)==null?void 0:_pokemon$volatiles$tr[4])||pokemon.level;
 var tier=this.battle.tier;
 var gen=this.battle.gen;
 var isRandomBattle=tier.includes('Random Battle')||
@@ -1341,7 +1347,6 @@ var maxIv=gen<3?30:31;
 
 var min;
 var max;
-var tr=Math.trunc||Math.floor;
 if(tier.includes("Let's Go")){
 min=tr(tr(tr(2*baseSpe*level/100+5)*minNature)*tr((70/255/10+1)*100)/100);
 max=tr(tr(tr((2*baseSpe+maxIv)*level/100+5)*maxNature)*tr((70/255/10+1)*100)/100);

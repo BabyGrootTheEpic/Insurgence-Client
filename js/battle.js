@@ -1096,6 +1096,7 @@ Battle=function(){
 
 
 
+
 function Battle()
 
 
@@ -1105,7 +1106,7 @@ function Battle()
 
 
 
-{var options=arguments.length>0&&arguments[0]!==undefined?arguments[0]:{};this.scene=void 0;this.sidesSwitched=false;this.stepQueue=void 0;this.preemptStepQueue=[];this.waitForAnimations=true;this.currentStep=0;this.seeking=null;this.activeMoveIsSpread=null;this.subscription=void 0;this.mute=false;this.messageFadeTime=300;this.messageShownTime=1;this.turnsSinceMoved=0;this.turn=-1;this.atQueueEnd=false;this.started=false;this.ended=false;this.isReplay=false;this.usesUpkeep=false;this.weather='';this.pseudoWeather=[];this.weatherTimeLeft=0;this.weatherMinTimeLeft=0;this.mySide=null;this.nearSide=null;this.farSide=null;this.p1=null;this.p2=null;this.p3=null;this.p4=null;this.pokemonControlled=0;this.sides=null;this.myPokemon=null;this.myAllyPokemon=null;this.lastMove='';this.gen=8;this.dex=Dex;this.teamPreviewCount=0;this.speciesClause=false;this.tier='';this.gameType='singles';this.rated=false;this.isBlitz=false;this.endLastTurnPending=false;this.totalTimeLeft=0;this.graceTimeLeft=0;this.kickingInactive=false;this.id='';this.roomid='';this.hardcoreMode=false;this.ignoreNicks=!!Dex.prefs('ignorenicks');this.ignoreOpponent=!!Dex.prefs('ignoreopp');this.ignoreSpects=!!Dex.prefs('ignorespects');this.debug=void 0;this.joinButtons=false;this.paused=void 0;
+{var options=arguments.length>0&&arguments[0]!==undefined?arguments[0]:{};this.scene=void 0;this.sidesSwitched=false;this.stepQueue=void 0;this.preemptStepQueue=[];this.waitForAnimations=true;this.currentStep=0;this.seeking=null;this.activeMoveIsSpread=null;this.subscription=void 0;this.mute=false;this.messageFadeTime=300;this.messageShownTime=1;this.turnsSinceMoved=0;this.turn=-1;this.atQueueEnd=false;this.started=false;this.ended=false;this.isReplay=false;this.usesUpkeep=false;this.weather='';this.pseudoWeather=[];this.weatherTimeLeft=0;this.weatherMinTimeLeft=0;this.mySide=null;this.nearSide=null;this.farSide=null;this.p1=null;this.p2=null;this.p3=null;this.p4=null;this.pokemonControlled=0;this.sides=null;this.myPokemon=null;this.myAllyPokemon=null;this.lastMove='';this.gen=8;this.dex=Dex;this.teamPreviewCount=0;this.speciesClause=false;this.tier='';this.gameType='singles';this.rated=false;this.rules={};this.isBlitz=false;this.endLastTurnPending=false;this.totalTimeLeft=0;this.graceTimeLeft=0;this.kickingInactive=false;this.id='';this.roomid='';this.hardcoreMode=false;this.ignoreNicks=!!Dex.prefs('ignorenicks');this.ignoreOpponent=!!Dex.prefs('ignoreopp');this.ignoreSpects=!!Dex.prefs('ignorespects');this.debug=void 0;this.joinButtons=false;this.paused=void 0;
 this.id=options.id||'';
 
 if(options.$frame&&options.$logFrame){
@@ -2382,7 +2383,8 @@ var speciesForme=targetForme&&!targetForme[1].endsWith('-Gmax')?targetForme[1]:t
 var _pokemon2=tpoke;
 var shiny=tpoke.shiny;
 var gender=tpoke.gender;
-_poke28.addVolatile('transform',_pokemon2,shiny,gender);
+var _level=tpoke.level;
+_poke28.addVolatile('transform',_pokemon2,shiny,gender,_level);
 _poke28.addVolatile('formechange',speciesForme);for(var _i26=0,_tpoke$moveTrack=
 tpoke.moveTrack;_i26<_tpoke$moveTrack.length;_i26++){var _trackedMove=_tpoke$moveTrack[_i26];
 _poke28.rememberMove(_trackedMove[0],0);
@@ -3292,12 +3294,13 @@ this.scene.resetSides();
 break;
 }
 case'rule':{
-var ruleName=args[1].split(': ')[0];
-if(ruleName==='Species Clause')this.speciesClause=true;
-if(ruleName==='Blitz'){
+var _ruleName=args[1].split(': ')[0];
+if(_ruleName==='Species Clause')this.speciesClause=true;
+if(_ruleName==='Blitz'){
 this.messageFadeTime=40;
 this.isBlitz=true;
 }
+this.rules[_ruleName]=1;
 this.log(args);
 break;
 }
