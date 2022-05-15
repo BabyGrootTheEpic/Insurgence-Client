@@ -1867,14 +1867,14 @@ swampertmegazo:1668+2,
 jirachidelta:1668+3,
 victinidelta:1668+4,
 golurkmega:1668+5,
-ausitto:1668+6};
-
-
-
-
-
-
-
+ausitto:1668+6,
+miloticdeltaf:1668+7,
+pinsirdelta:1668+8,
+zangoosedelta:1668+9,
+chimechodelta:1668+10,
+aggrondeltai:1668+11,
+machampdelta:1668+12,
+houndoomdelta:1668+13};
 
 
 
