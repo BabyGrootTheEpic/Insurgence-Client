@@ -842,6 +842,15 @@ const BattlePokemonIconIndexes: {[id: string]: number} = {
 	machampdelta: 1668 + 12,
 	houndoomdelta: 1668 + 13,
 
+	megasparce: 206,
+	warhaxorus: 612,
+	cybergoomy: 704,
+	hydreigod: 635,
+	machamence: 373,
+	rizeflygon: 330,
+	shineflygon: 330,
+	gigagoomy: 704,
+
 	//pidgeotshadow: 1668 + 14,
 	//vulpixshadow: 1668 + 15,
 	//growlitheshadow: 1668 + 16,

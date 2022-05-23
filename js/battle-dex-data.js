@@ -840,7 +840,16 @@ zangoosedelta:1668+9,
 chimechodelta:1668+10,
 aggrondeltai:1668+11,
 machampdelta:1668+12,
-houndoomdelta:1668+13};
+houndoomdelta:1668+13,
+
+megasparce:206,
+warhaxorus:612,
+cybergoomy:704,
+hydreigod:635,
+machamence:373,
+rizeflygon:330,
+shineflygon:330,
+gigagoomy:704};
 
 
 
