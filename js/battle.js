@@ -751,11 +751,23 @@ if(this.pokemon.length>this.totalPokemon||this.battle.speciesClause){
 
 var existingTable={};
 var toRemove=-1;
+var newMegaZor=poke.speciesForme==='Zoroark-Mega';
 for(var poke1i=0;poke1i<this.pokemon.length;poke1i++){
 var poke1=this.pokemon[poke1i];
-if(!poke1.searchid)continue;
-if(poke1.searchid in existingTable){
-var poke2i=existingTable[poke1.searchid];
+if(!poke1.searchid){
+
+if(newMegaZor&&poke1.speciesForme==='Zoroark'&&poke1.name===poke.name&&poke1.level===poke.level&&poke1.gender===poke.gender){
+toRemove=poke1i;
+break;
+}else continue;
+}
+
+
+
+
+var poke1UnMegaSearchId=poke1.searchid.replace('Eevee-Mega','Eevee-Tutored-Mega').replace('Sunflora-M-Mega','Sunflora-Mega').replace(/-Mega.*?((?=,)|$)/,'');
+if(poke1UnMegaSearchId in existingTable){
+var poke2i=existingTable[poke1UnMegaSearchId];
 var poke2=this.pokemon[poke2i];
 if(poke===poke1){
 toRemove=poke2i;
@@ -772,7 +784,7 @@ toRemove=poke1i;
 }
 break;
 }
-existingTable[poke1.searchid]=poke1i;
+existingTable[poke1UnMegaSearchId]=poke1i;
 }
 if(toRemove>=0){
 if(this.pokemon[toRemove].fainted){

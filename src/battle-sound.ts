@@ -115,7 +115,9 @@ export const BattleSound = new class {
 		if (this.soundCache[url]) return this.soundCache[url];
 		try {
 			const sound = document.createElement('audio');
-			sound.src = 'https://' + Config.routes.client + '/' + url;
+			//sound.src = 'https://' + Config.routes.client + '/' + url;
+			const unDeltaUrl = url.includes('meloettadelta') ? url.replace('meloettadelta', 'meloetta-pirouette') : url.replace(/-?delta.*?(?=-mega|-unbound|-crystal|\.)/, '');
+			sound.src = 'https://raw.githubusercontent.com/BabyGrootTheEpic/Sprites/main/play.pokemonshowdown.com/' + unDeltaUrl;
 			sound.volume = this.effectVolume / 100;
 			this.soundCache[url] = sound;
 			return sound;

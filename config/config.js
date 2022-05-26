@@ -151,14 +151,14 @@ Config.whitelist = [
 Config.defaultserver = {
 	id: 'showdown',
 	host: '34.134.251.210',
-	port: 443,
+	port: 80,
 	httpport: 8000,
 	altport: 80,
 	registered: false
 };
 
 /*** Begin automatically generated configuration ***/
-Config.version = "0.11.2 (a869a1f5)";
+Config.version = "0.11.2 (90e20b9d)";
 
 Config.routes = {
 	root: 'pokemonshowdown.com',

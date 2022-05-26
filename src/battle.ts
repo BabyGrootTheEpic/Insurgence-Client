@@ -751,11 +751,23 @@ export class Side {
 			// check for Illusion
 			let existingTable: {[searchid: string]: number} = {};
 			let toRemove = -1;
+			const newMegaZor = poke.speciesForme === 'Zoroark-Mega';
 			for (let poke1i = 0; poke1i < this.pokemon.length; poke1i++) {
 				let poke1 = this.pokemon[poke1i];
-				if (!poke1.searchid) continue;
-				if (poke1.searchid in existingTable) {
-					let poke2i = existingTable[poke1.searchid];
+				if (!poke1.searchid) {
+					//Helps prevent extra Zoroark-Mega icons from appearing in battles with team prieview.
+					if (newMegaZor && poke1.speciesForme === 'Zoroark' && poke1.name === poke.name && poke1.level === poke.level && poke1.gender === poke.gender) {
+						toRemove = poke1i;
+						break;
+					} else continue;
+				}
+
+				/*If a Zoroark mega evolves and its illusion becomes mega evolved, the real Pokémon's icon will become mega evolved,
+				* even after Zoroark-Mega's illusion is broken. If poke1.searchid was used instead of this variable,
+				* switching the real Pokémon in would add an extra icon, making the team appear bigger than it is.*/
+				const poke1UnMegaSearchId = poke1.searchid.replace('Eevee-Mega', 'Eevee-Tutored-Mega').replace('Sunflora-M-Mega', 'Sunflora-Mega').replace(/-Mega.*?((?=,)|$)/, '')
+				if (poke1UnMegaSearchId in existingTable) {
+					let poke2i = existingTable[poke1UnMegaSearchId];
 					let poke2 = this.pokemon[poke2i];
 					if (poke === poke1) {
 						toRemove = poke2i;
@@ -772,7 +784,7 @@ export class Side {
 					}
 					break;
 				}
-				existingTable[poke1.searchid] = poke1i;
+				existingTable[poke1UnMegaSearchId] = poke1i;
 			}
 			if (toRemove >= 0) {
 				if (this.pokemon[toRemove].fainted) {
