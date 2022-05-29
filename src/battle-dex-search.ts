@@ -1530,7 +1530,6 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 			if (isHackmons) moves = [];
 			for (let id in BattleMovedex) {
 				if (!format.startsWith('cap') && (id === 'paleowave' || id === 'shadowstrike')) continue;
-				if (id === 'wishperiodic') continue;
 				const move = dex.moves.get(id);
 				if (move.gen > dex.gen) continue;
 				if (isHackmons) {

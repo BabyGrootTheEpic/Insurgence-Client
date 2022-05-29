@@ -761,6 +761,7 @@ const BattlePokemonIconIndexes: {[id: string]: number} = {
 
 	poliwrathmega: 1608 + 0,
 	marowakmega: 1608 + 1,
+	eeveemega: 1608 + 2,
 	eeveemegabase: 1608 + 2,
 	eeveemegav: 1608 + 2,
 	eeveemegaj: 1608 + 2,
@@ -799,6 +800,11 @@ const BattlePokemonIconIndexes: {[id: string]: number} = {
 	stunfiskmega: 1608 + 29,
 	bisharpmega: 1608 + 30,
 	hydreigonmega: 1608 + 31,
+	hydreigonmegafive: 1608 + 31,
+	hydreigonmegasix: 1608 + 31,
+	hydreigonmegaseven: 1608 + 31,
+	hydreigonmegaeight: 1608 + 31,
+	hydreigonmeganine: 1608 + 31,
 	sunflorafmega: 1608 + 32,
 	venusaurdeltamegaf: 1608 + 33,
 

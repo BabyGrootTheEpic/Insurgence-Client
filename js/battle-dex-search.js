@@ -1530,7 +1530,6 @@ if(sketch||isHackmons){
 if(isHackmons)moves=[];
 for(var _id10 in BattleMovedex){
 if(!format.startsWith('cap')&&(_id10==='paleowave'||_id10==='shadowstrike'))continue;
-if(_id10==='wishperiodic')continue;
 var _move=dex.moves.get(_id10);
 if(_move.gen>dex.gen)continue;
 if(isHackmons){

@@ -33667,6 +33667,7 @@ BattleMoveAnims['wildfire']={anim:BattleMoveAnims['shelltrap'].anim};
 BattleMoveAnims['livewire']={anim:BattleMoveAnims['electroweb'].anim};
 BattleMoveAnims['permafrost']={anim:BattleMoveAnims['freezedry'].anim};
 BattleMoveAnims['zombiestrike']={anim:BattleMoveAnims['shadowclaw'].anim};
+BattleMoveAnims['morph']={anim:BattleMoveAnims['transform'].anim};
 
 BattleMoveAnims['lunarcannon']={
 anim:BattleMoveAnims['moongeistbeam'].anim,
