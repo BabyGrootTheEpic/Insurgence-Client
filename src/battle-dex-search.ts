@@ -1352,7 +1352,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		case 'hyperspacefury':
 			return species.id === 'hoopaunbound';
 		case 'spiritaway':
-			return species.id === 'hoopaunbound';
+			return species.id === 'hoopadeltaunbound';
 		case 'hypnosis':
 			return (dex.gen >= 4 || !moves.includes('sleeppowder')) || (dex.gen > 6 && abilityid === 'baddreams');
 		case 'icywind':
@@ -1385,7 +1385,7 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 		case 'poisonfang':
 			return species.types.includes('Poison') && !moves.includes('gunkshot') && !moves.includes('poisonjab');
 		case 'relicsong':
-			return species.id === 'meloetta' || species.baseSpecies === 'Meloetta-Delta';
+			return species.num === 648;
 		case 'refresh':
 			return !moves.includes('aromatherapy') && !moves.includes('healbell');
 		case 'risingvoltage':
@@ -1416,8 +1416,6 @@ class BattleMoveSearch extends BattleTypedSearch<'move'> {
 			return ['megalauncher', 'technician'].includes(abilityid) && !moves.includes('originpulse');
 		case 'trickroom':
 			return species.baseStats.spe <= 100;
-		case 'jetstream':
-			return !moves.includes('tailwind');
 		}
 
 		if (this.formatType === 'doubles' && BattleMoveSearch.GOOD_DOUBLES_MOVES.includes(id)) {
