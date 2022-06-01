@@ -1180,8 +1180,11 @@ speedModifiers.push(2);
 if(item==='choicespecs'&&!(clientPokemon!=null&&clientPokemon.volatiles['dynamax'])){
 stats.spa=Math.floor(stats.spa*1.5);
 }
-if(item==='deepseatooth'&&species==='Clamperl'){
+if(item==='deepseatooth'&&serverPokemon.speciesForme==='Clamperl'){
 stats.spa*=2;
+}
+if(item==='dragonfang'&&serverPokemon.speciesForme==='Clamperl-Delta'){
+stats.atk*=2;
 }
 if(item==='souldew'&&this.battle.gen<=6&&(species==='Latios'||species==='Latias')){
 stats.spa=Math.floor(stats.spa*1.5);
@@ -1204,8 +1207,11 @@ break;
 if(item==='assaultvest'){
 stats.spd=Math.floor(stats.spd*1.5);
 }
-if(item==='deepseascale'&&species==='Clamperl'){
+if(item==='deepseascale'&&serverPokemon.speciesForme==='Clamperl'){
 stats.spd*=2;
+}
+if(item==='dragonscale'&&serverPokemon.speciesForme==='Clamperl-Delta'){
+stats.def*=2;
 }
 if(item==='choicescarf'&&!(clientPokemon!=null&&clientPokemon.volatiles['dynamax'])){
 speedModifiers.push(1.5);
