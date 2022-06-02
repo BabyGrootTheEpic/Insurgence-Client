@@ -150,19 +150,19 @@ Config.whitelist = [
 // address bar is `Config.routes.client`.
 Config.defaultserver = {
 	id: 'showdown',
-	host: '34.134.251.210',
-	port: 80,
+	host: '77.162.113.75',
+	port: 443,
 	httpport: 8000,
 	altport: 80,
-	registered: false
+	registered: true
 };
 
 /*** Begin automatically generated configuration ***/
-Config.version = "0.11.2 (ea60bff8)";
+Config.version = "0.11.2 (ec1b9ec9)";
 
 Config.routes = {
 	root: 'pokemonshowdown.com',
-	client: '34.134.251.210',
+	client: 'insurgence-battle-sim.nl',
 	dex: 'dex.pokemonshowdown.com',
 	replays: 'replay.pokemonshowdown.com',
 	users: 'pokemonshowdown.com/users',
