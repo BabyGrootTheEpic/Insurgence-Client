@@ -826,8 +826,7 @@ this.battle.scene.updateSidebar(this);
 return poke;
 };_proto2.
 
-switchIn=function switchIn(pokemon,slot){var _this$lastPokemon;
-if(slot===undefined)slot=pokemon.slot;
+switchIn=function switchIn(pokemon){var _this$lastPokemon;var slot=arguments.length>1&&arguments[1]!==undefined?arguments[1]:pokemon.slot;
 this.active[slot]=pokemon;
 pokemon.slot=slot;
 pokemon.clearVolatile();
@@ -882,17 +881,16 @@ this.battle.scene.animUnsummon(oldpokemon,true);
 }
 this.battle.scene.animSummon(pokemon,slot,true);
 };_proto2.
-switchOut=function switchOut(pokemon){var slot=arguments.length>1&&arguments[1]!==undefined?arguments[1]:pokemon.slot;
+switchOut=function switchOut(pokemon,kwArgs){var slot=arguments.length>2&&arguments[2]!==undefined?arguments[2]:pokemon.slot;
 if(pokemon.lastMove!=='batonpass'&&pokemon.lastMove!=='zbatonpass'){
 pokemon.clearVolatile();
 }else{
 pokemon.removeVolatile('transform');
 pokemon.removeVolatile('formechange');
 }
-if(pokemon.lastMove==='uturn'||pokemon.lastMove==='voltswitch'){
-this.battle.log(['switchout',pokemon.ident],{from:pokemon.lastMove});
-}else if(pokemon.lastMove!=='batonpass'&&pokemon.lastMove!=='zbatonpass'){
-this.battle.log(['switchout',pokemon.ident]);
+var effect=Dex.getEffect(kwArgs.from);
+if(!['batonpass','zbatonpass','teleport'].includes(effect.id)){
+this.battle.log(['switchout',pokemon.ident],{from:effect.id});
 }
 pokemon.statusData.toxicTurns=0;
 if(this.battle.gen===5)pokemon.statusData.sleepTurns=0;
@@ -2233,10 +2231,12 @@ case'-enditem':{
 var _poke24=this.getPokemon(args[1]);
 var _item2=Dex.items.get(args[2]);
 var _effect11=Dex.getEffect(kwArgs.from);
+if(this.gen>4||_effect11.id!=='knockoff'){
 _poke24.item='';
 _poke24.itemEffect='';
 _poke24.prevItem=_item2.name;
 _poke24.prevItemEffect='';
+}
 _poke24.removeVolatile('airballoon');
 _poke24.addVolatile('itemremoved');
 if(kwArgs.eat){
@@ -2252,7 +2252,11 @@ case'fling':
 _poke24.prevItemEffect='flung';
 break;
 case'knockoff':
+if(this.gen<=4){
+_poke24.itemEffect='knocked off';
+}else{
 _poke24.prevItemEffect='knocked off';
+}
 this.scene.runOtherAnim('itemoff',[_poke24]);
 this.scene.resultAnim(_poke24,'Item knocked off','neutral');
 break;
@@ -3466,7 +3470,7 @@ poke.healthParse(args[3]);
 poke.removeVolatile('itemremoved');
 if(args[0]==='switch'){
 if(poke.side.active[slot]){
-poke.side.switchOut(poke.side.active[slot]);
+poke.side.switchOut(poke.side.active[slot],kwArgs);
 }
 poke.side.switchIn(poke);
 }else if(args[0]==='replace'){

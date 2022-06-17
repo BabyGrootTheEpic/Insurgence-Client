@@ -116,8 +116,8 @@ if(this.soundCache[url])return this.soundCache[url];
 try{
 var sound=document.createElement('audio');
 
-var unDeltaUrl=url.includes('meloettadelta')?url.replace('meloettadelta','meloetta-pirouette'):url.replace(/-?delta.*?(?=-mega|-unbound|-crystal|\.)/,'');
-sound.src='https://raw.githubusercontent.com/BabyGrootTheEpic/Sprites/main/play.pokemonshowdown.com/'+unDeltaUrl;
+var unDeltaUrl=url.includes('meloettadeltamime')?url.replace('meloettadeltamime','meloetta-pirouette'):url.replace(/-?delta.*?(?=-mega|-unbound|-crystal|\.)/,'');
+sound.src='https://raw.githubusercontent.com/Poilerwags/Sprites/master/play.pokemonshowdown.com/'+unDeltaUrl;
 sound.volume=this.effectVolume/100;
 this.soundCache[url]=sound;
 return sound;

@@ -3163,7 +3163,7 @@
 				} else if (move.category === 'Physical' && !move.damage && !move.ohko &&
 					!['foulplay', 'endeavor', 'counter', 'bodypress', 'seismictoss', 'bide', 'metalburst', 'superfang'].includes(move.id) && !(this.curTeam.gen < 8 && move.id === 'rapidspin')) {
 					minAtk = false;
-				} else if (['metronome', 'assist', 'copycat', 'mefirst', 'photongeyser', 'shellsidearm'].includes(move.id)) {
+				} else if (['metronome', 'assist', 'copycat', 'mefirst', 'photongeyser', 'shellsidearm'].includes(move.id) || (this.curTeam.gen === 5 && move.id === 'naturepower')) {
 					minAtk = false;
 				}
 				if (minSpe === false && moveName === 'Gyro Ball') {
@@ -3223,6 +3223,7 @@
 					if (baseFormat.includes('littlecup') ||
 						baseFormat.substr(0, 2) === 'lc' || baseFormat.substr(0, 5) === 'caplc' || baseFormat.substr(-2) === 'lc') set.level = 5;
 					if (baseFormat.substr(0, 19) === 'battlespotspecial17') set.level = 1;
+					if (baseFormat.substr(0, 8) === 'level120') set.level = 120;
 					if (format && format.teambuilderLevel) {
 						set.level = format.teambuilderLevel;
 					}
