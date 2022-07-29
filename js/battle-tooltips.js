@@ -2135,6 +2135,8 @@ return text;
 
 
 
+
+
 BattleStatGuesser=function(){
 
 
